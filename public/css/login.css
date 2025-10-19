@@ -1,0 +1,163 @@
+body 
+{
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 13px;
+}
+#wrapper
+{
+    width: 1200px;
+    /* height: 130px; */
+    margin: 0px auto;
+}
+#header
+{
+    /* background: #029ef3; */
+    background-color: #fff;
+    /* display: flex;
+    justify-content: space-between; Đặt hai ul ở hai bên (chỉ áp dụng cho các phần tử con của thẻ này) */
+}
+#footer
+{
+    background-color: #000;
+}
+
+/*=======================================*/
+ul
+{
+    /* text-align: center; Canh giữa nội dung */
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+ul#main_menu_bar 
+{
+    display: flex;
+}
+#main_menu_bar li:first-child a {
+    font-family: 'Georgia', serif; 
+    font-size: 35px; 
+    font-weight: bold; 
+    color: #000;
+    font-family: 'Times New Roman', Times, serif;
+
+}
+#horizontal-line {
+    border: none;
+    border-top: 1px solid #333; 
+    width: 100%; 
+    /* margin: 20px 0;  */
+}
+
+#content
+{
+    min-height: 600px;
+    padding: 20px 0px;
+}
+
+/* =========================== LOGIN =========================== */
+/* body {
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 23px;
+    background: rgb(161, 161, 161) ;
+} */
+
+#wp-form-login{
+    padding: 20px;
+    text-align: center;
+}
+#form-login h2 {
+    font-size: 24px;
+    display: block;
+    margin: 0 auto;
+    margin: 25px 0px;
+    margin-top: 45px;
+    text-align: center;
+    color: #000;
+    /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+    /* font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
+    font-family: 'Times New Roman', Times, serif;
+}
+#form-login {
+    margin: 0px auto;
+    max-width: 370px;
+    padding: 5px 20px;
+    /* border-radius: 5px; */
+    /* background-color: transparent; */
+    /* background: rgba(253, 253, 253, 0.5); */
+}
+#form-login input[type='text']{
+    display: block;
+    margin: 5px auto;
+    width: 100%;
+    height: 40px;
+    /* margin-bottom: 15px; */
+    margin-top: 40px;
+    background: rgb(247 247 248);
+    padding: 0 0 0 10px;
+    /* color: #faf4f4; */
+    color: #585858;
+    /* font-weight: 300; */
+    border: none;
+}
+#form-login input[type='password'] {
+    /* display: block; */
+    margin: 5px auto;
+    width: 100%;
+    height: 40px;
+
+    background: rgb(247 247 248);
+    border: none;
+    /* border-radius: 5px; */
+}
+#form-login input[type='checkbox']
+{
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+#btn_login {
+    color: #fff;
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    background: #000;
+    width: 100%;
+    height: 50px;
+    cursor: pointer;
+    
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 7px;
+    padding: 5px;
+    border: none;
+    /* border-radius: 5px; */
+}
+#btn_login:hover {
+    background-color: #333;
+    /* text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.8);  */
+    /* box-shadow: 0px 0px 15px #f1f10a;  */
+    /* transform: scale(1.1); */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+.remember_me
+{
+    cursor: pointer;
+}
+.remember_me:hover
+{
+    color: #000;
+}
+#lost-pass {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    color:rgb(122, 121, 121);
+}
+#lost-pass:hover {
+    color: #000;
+}
+.error 
+{
+    font-size: 10px;
+    color: red;
+}

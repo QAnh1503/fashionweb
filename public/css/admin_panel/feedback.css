@@ -1,0 +1,93 @@
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background-color: #f8f9fa; /* Màu nền nhẹ nhàng */
+    margin: 0;
+}
+
+.feedback-management {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 15px; /* Bo góc */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Bóng nhẹ */
+    backdrop-filter: blur(10px); /* Hiệu ứng glassmorphism */
+    transition: transform 0.2s; /* Hiệu ứng chuyển động khi hover */
+}
+
+.feedback-management:hover {
+    transform: translateY(-5px); /* Nâng nhẹ khi hover */
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #343a40; /* Màu chữ */
+}
+
+.search-filter {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.search-filter input {
+    border-radius: 25px; /* Bo góc cho input */
+    padding: 10px 20px; /* Padding cho input */
+    border: 1px solid #ced4da; /* Viền cho input */
+    transition: all 0.3s; /* Hiệu ứng chuyển động */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bóng nhẹ cho input */
+    flex: 1; /* Input chiếm không gian còn lại */
+    margin-right: 10px; /* Khoảng cách giữa input và button */
+}
+
+.search-filter input:focus {
+    border-color: #007bff; /* Thay đổi màu viền khi focus */
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.5); /* Bóng tối hơn khi focus */
+    outline: none; /* Loại bỏ viền mặc định */
+}
+
+.search-filter button {
+    border-radius: 25px; /* Bo góc cho button */
+    padding: 10px 20px; /* Padding cho button */
+    font-weight: bold; /* Chữ đậm */
+    transition: all 0.3s; /* Hiệu ứng chuyển động */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bóng nhẹ cho button */
+}
+
+.search-filter button:hover {
+    background-color: #0056b3; /* Thay đổi màu nền khi hover */
+    box-shadow: 0 4px 12px rgba(0, 86, 179, 0.5); /* Bóng tối hơn khi hover */
+}
+
+.table {
+    margin-top: 20px;
+    border-radius: 15px; /* Bo góc cho bảng */
+    overflow: hidden; /* Ẩn viền ngoài */
+}
+
+.table th,
+.table td {
+    text-align: center;
+    border: none; /* Không viền cho ô */
+}
+
+.table th {
+    background-color: #343a40;
+    color: #ffffff;
+}
+
+.btn {
+    margin: 0 5px;
+}
+
+@media (max-width: 768px) {
+    .search-filter {
+        flex-direction: column;
+    }
+
+    .search-filter input {
+        margin-bottom: 10px;
+    }
+
+    .search-filter button {
+        margin: 0; /* Xóa margin trên mobile */
+    }
+}

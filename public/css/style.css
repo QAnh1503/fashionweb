@@ -1,0 +1,375 @@
+
+
+
+
+/* ======= Main video container & content ======= */
+.main_video_container {
+    position: relative; /* Để nó nằm trong luồng tài liệu */
+    display: block;
+}
+.video-main {
+    filter: brightness(0.5);
+    position: fixed; 
+    /* ko bị ảnh hưởng bởi cuộc trang, Phần tử sẽ được định vị dựa trên cửa sổ hiển thị (viewport), không phụ thuộc vào các phần tử khác. */ 
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    overflow: hidden; 
+    /* Nd nào nằm tràn ra bên ngoài thì sẽ bị ẩn đi*/
+    z-index: -1; 
+}
+h1{
+    font-weight: 750;
+    color: #fff;
+    font-size: 150px;
+    /* font-family: "Sofia", sans-serif; */
+    /* font-family: "Audiowide", sans-serif; */
+    font-family: "Trirong", serif;
+    /* text-shadow: 3px 3px 3px #ababab; */
+
+    display: flexbox;
+    /* align-items: center; */
+    text-align: center;
+    justify-content: center;
+    margin-top: 240px;
+    z-index: 2;
+}
+h2{
+    font-family: "Roboto Condensed", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+    color: #fff;
+    font-size: 35px;
+    margin-bottom: 20px ;
+}
+h3 {
+    font-family: "Roboto Condensed", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+    font-size: 30px;
+    color: #fff;
+    /* display: flexbox; */
+    text-align: center;
+    justify-content: center;
+    margin-bottom:20px ;
+}
+p {
+    color: #fff;
+    font-family: "Roboto Condensed", sans-serif;
+    font-weight: weight;
+    font-style: normal;
+    margin: 20px 0;
+    width: 90%;
+    align-items: center;
+    text-align: center;
+    line-height: 20px;
+}
+
+section {
+    display: grid;
+    place-items: center;
+    align-content: center;
+    min-height: 100vh;
+}
+/* ============== CSS TRANSITION ============== */
+.hidden {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateY(200px);
+    transition: all 1s ease; /*ease tạo ra hiệu ứng chuyển động mượt mà, tăng tốc ở đầu, chậm lại ở giữa và giảm tốc khi kết thúc*/
+}
+@media(prefers-reduced-motion: reduce) {
+    .hidden {
+        transition: none;
+    }
+}
+.show {
+    opacity: 1;
+    filter: blur(0); /*hiệu ứng làm mờ (blur), giá trị 0 có nghĩa là không có hiệu ứng làm mờ. */
+    transform: translateY(0);
+}
+
+.for_someone_container {
+    margin: auto;
+    display: block;
+    text-align: center;
+    margin: 20px 0;
+}
+.for_someone {
+    position: relative;
+    cursor: pointer;
+    color: #fff;
+    font-size: 20px;
+    font-family: "Roboto Condensed", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+    border: 1px solid #fff;
+    padding: 5px 50px;
+    margin: 0 20px;
+    width: 120px;
+    height: 30px;
+    z-index: 100; /* Đảm bảo nội dung luôn nằm trên lớp nền */
+
+    overflow: hidden;
+    /* transition: bottom 0.3s ease; */
+    transition: transform 0.4s ease, background-color 0.5s ease;
+}
+.for_someone:hover {
+    color: #000; 
+    transform: scale(1.1); /* Phóng to nút */
+    background-color: #fff /* Thay đổi màu nền */
+}
+/* .for_someone::after {
+    content: "";
+    position: absolute;
+    bottom: 0; 
+    transform: translateY(-100%);
+    left: 0; 
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    transition: bottom 0.3s ease; 
+    z-index: -1000;
+    opacity: 0;
+}
+.for_someone:hover::after {
+    transform: translateY(0);
+    opacity: 1;
+    color: #000;
+} */
+
+
+#discover_gift {
+    cursor: pointer;  
+    width: 500px;
+    height: 50px;
+    border-radius: 2px;
+    background-color: #fff;
+    color: #000;
+    font-size: 30px;
+    font-family: "Roboto Condensed", sans-serif;
+    font-optical-sizing: auto;
+    /* font-weight: bold; */
+    font-style: normal;
+    border: 1px solid #fff;
+    /* margin: 40px; */
+    display: flex;
+    margin: 40px auto;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* ====== Main content container below main video ======*/
+.main_content_container {
+    /* display: flex; */
+    position: relative; 
+    /* Để nằm trong luồng tài liệu */
+    background-color: #fff;
+    width: 100%;
+    height: 3000px;
+    z-index: 1; /* Đặt lên trên video */
+    /* overflow: hidden; */
+
+    display: grid;
+    place-items: center;
+
+    /* padding-bottom: 40px; */
+}
+.each_main_content_container {
+    width: 80%;
+    height: 500px;
+    display: flex;
+    /* flex: 1; */
+    /* margin: 20px 0; */
+}
+.img-below-vid, .content-vid {
+    flex: 1; 
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+}
+.img-below-vid {
+    width: 400px;
+    height: 500px;
+    /* margin: 20px 10px 10px 20px; */
+}
+.img-below-vid {
+    animation: fade-in linear;
+    /* animation-timeline: scroll(); */
+    animation-timeline: view();
+}
+@keyframes fade-in {
+    from { transform: scale(0.8); opacity: 0.5;}
+    to {transform: scale(1.2); opacity: 1;}
+}
+.content-vid {
+    /* Căn giữa nội dung bên trong nhưng chỉ dùng cho thẻ div, p hoặc bất kỳ phần tử nội tuyến nào.*/
+    display: flex; /* Sử dụng Flexbox */
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    
+}
+.content-vid h2{
+    color: #000;
+    font-size: 30px;
+    font-family: "Roboto Condensed", sans-serif;
+    font-optical-sizing: auto;
+    /* font-weight: bold; */
+    font-style: normal;
+    margin: 30px;
+}
+.content_below {
+    margin-top: 20px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 0;
+}
+#content_below_h2 {
+    color: #000;
+    font-size: 24px;
+    font-family: "Abel", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+}
+.content_below_p, .content_below_p_contact_us{
+    color: #000;
+    font-family: "Abel", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    width: 100%;
+    cursor: pointer;
+    transition: 0.5s;
+    position: relative;
+}
+.content_below_p_contact_us::before {
+    content: "+";
+    position:absolute; /*giúp dấu + có thể được điều chỉnh vị trí chính xác trong phần tử p, mà không bị ảnh hưởng bởi các phần tử khác trong đó.*/
+    transform-origin: center; /*xác định tâm xoay cho các phép biến đổi (transform) như rotate, scale, hoặc translate.*/
+    display: inline-block; 
+    /*display: inline-block cho phép phần tử có thể đặt các kích thước chiều rộng và chiều cao (khác với display: inline).
+                Ngoài ra, inline-block giúp phần tử không chiếm toàn bộ dòng (như display: block), cho phép nhiều phần tử khác có thể đứng cạnh nó theo chiều ngang nếu có.
+                Trong trường hợp của ::before, display: inline-block cũng giúp phép biến đổi xoay (rotate) hoạt động chính xác hơn.*/
+    transition: transform 0.3s ease;
+    left: 190px;
+}
+.content_below_p_contact_us:hover
+{
+    transform: scale(1.02);
+}
+.content_below_p_contact_us:hover::before {
+    animation: rotatePlus 1.5s ease forwards;
+    /* ease in out cũng bắt đầu chậm, kthuc chậm, tăng tốc ở giữa như ease. Nhưng cả hai giai đoạn tăng tốc và giảm tốc rõ ràng hơn.*/
+    /* forwards:  giữ dấu + ở trạng thái xoay hoàn tất 360 độ ngay cả sau khi hiệu ứng kết thúc, không quay về vị trí ban đầu.*/
+}
+@keyframes rotatePlus {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ================ FOOTER ===================*/
+#footer
+{
+    background-color: #000;
+    width: 100%;
+    z-index: 2;
+    justify-items: center;
+    padding: 70px 0 5px 50px;
+}
+#content_footer {
+    margin: 50px;
+    width: 70%;
+    align-items: center;
+}
+#content_footer p{
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    margin-top: 40px;
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+.plus {
+    position: relative;
+}
+.plus::before {
+    position: absolute;
+    content: "+";
+    transition: all 0.5s ease;
+    margin-left: -15px;
+}
+.plus:hover {
+    transform: scale(1.02);
+}
+.plus:hover::before {
+    animation: rotatePlus 1.5s ease forwards;
+}
+#terms_footer {
+    display: flex;
+    width: 100%;
+    margin: 20px;
+}
+.column {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 40px;
+
+    display: flex;
+    flex-direction: column; /* Đặt hướng cột */
+    text-align: left;
+}
+.column:nth-child(1) {
+    width: 700px; 
+}
+.column:nth-child(2) {
+    width: 700px; 
+}
+.column:nth-child(3) {
+    width: 100%; 
+}
+.main_row {
+    font-weight: 600;
+    color: dimgrey;
+}
+.row {
+    font-size: 12px;
+    cursor: pointer;
+    color: #fff;
+}
+.under_span{
+    position: relative; 
+}
+.under_span::after {
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 0.9px;
+    transition: transform 0.3s ease, opacity 0.3s ease; 
+    background-color: #fff; /* Màu gạch chân giống màu chữ */
+    /* transform: translateY(5px);  */
+    opacity: 1;
+}
+.under_span:hover::after {
+    animation: disappear 0.5s ease;
+}
+@keyframes disappear {
+    /* 0% { transform: translateX(0); opacity: 1; } 
+    50% { transform: translateX(10px); opacity: 0; }
+    100% { transform: translateX(10px); opacity: 0; }  */
+    0% { transform: translateX(-10px); opacity: 0; } /* Bắt đầu ở bên trái và biến mất */
+    50% { transform: translateX(10px); opacity: 0;}
+    100% { transform: translateX(0); opacity: 1; } /* Về vị trí ban đầu và hiện lên */
+}

@@ -1,0 +1,169 @@
+/* Content on large screen (adjusted to accommodate sidebar) */
+.content {
+    margin-left: 250px;
+    /* Add margin to make room for sidebar */
+    padding: 20px;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+.content_admin {
+    padding: 40px;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.content {
+    margin-left: 22%;
+    background-color: #fff;
+}
+
+
+
+h2 {
+    margin: 20px 0 50px 0;
+    color: #000;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 30px;
+}
+
+
+table {
+    /* border-collapse: collapse; */
+    width: 100%;
+    margin-bottom: 20px;
+    font-family: "Montserrat", sans-serif;
+    color: #000;
+    margin-top: 30px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+table th,
+table td {
+    /* border: 1px solid #ddd; */
+    text-align: center;
+    border: none;
+    font-size: 13px;
+    color: #000;
+}
+
+.table .thead-dark th {
+    background-color: #000;
+    color: #ffffff;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 550;
+    font-size: 15px;
+}
+
+.table-bordered td,
+.table-bordered th {
+    border: none;
+}
+
+.table td,
+.table th {
+    vertical-align: middle;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    /* background-color: rgba(0, 0, 0, .05); */
+    background-color: #fff;
+}
+
+
+#personalize {
+    font-family: "Roboto Condensed", sans-serif;
+    color: #000;
+    display: block;
+    font-size: 12px;
+    justify-self: center;
+    cursor: pointer;
+    position: relative;
+}
+
+#personalize::after {
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 0.9px;
+    background-color: #000;
+    transition: transform 0.3s ease, opacity 0.5s ease;
+    opacity: 1;
+}
+
+#personalize:hover::after {
+    animation: disappear 0.5s ease;
+}
+
+.btn-primary {
+    margin-top: 20px;
+    float: right;
+    background-color: #000;
+    border: none;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 550;
+    border-radius: unset;
+    transition: all 0.5s ease-in-out;
+}
+
+.btn-primary:hover {
+    background-color: #000;
+    opacity: 0.8;
+    transform: scale(0.91);
+}
+
+.badge-success {
+    background-color: #48bf63;
+    color: white;
+    padding: 3px;
+}
+
+.badge-danger {
+    background-color: #dc3545;
+    color: white;
+    padding: 3px;
+}
+
+.active_btn button {
+    font-family: "Montserrat", sans-serif;
+    font-size: 13px;
+    transition: all 0.5s ease-in-out;
+
+}
+
+.active_btn button:hover {
+    opacity: 0.8;
+    transform: scale(0.93);
+}
+
+.staff_accounts {
+    margin: 170px 0 50px 0;
+}
+
+@keyframes disappear {
+
+    /* 0% { transform: translateX(0); opacity: 1; } 
+    50% { transform: translateX(10px); opacity: 0; }
+    100% { transform: translateX(10px); opacity: 0; }  */
+    0% {
+        transform: translateX(-10px);
+        opacity: 0;
+    }
+
+    50% {
+        transform: translateX(10px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}

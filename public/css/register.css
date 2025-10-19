@@ -1,0 +1,389 @@
+body 
+{
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 13px;
+}
+#wrapper
+{
+    width: 1200px;
+    /* height: 130px; */
+    margin: 0px auto;
+}
+#header
+{
+    /* background: #029ef3; */
+    background-color: #fff;
+    /* display: flex;
+    justify-content: space-between; Đặt hai ul ở hai bên (chỉ áp dụng cho các phần tử con của thẻ này) */
+}
+#footer
+{
+    background-color: #000;
+}
+
+/*=======================================*/
+ul
+{
+    /* text-align: center; Canh giữa nội dung */
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+ul#main_menu_bar 
+{
+    display: flex;
+}
+#main_menu_bar li:first-child a {
+    font-family: 'Georgia', serif; 
+    font-size: 35px; 
+    font-weight: bold; 
+    color: #000;
+    font-family: 'Times New Roman', Times, serif;
+
+}
+#horizontal-line {
+    border: none;
+    border-top: 1px solid #333; 
+    width: 100%; 
+    /* margin: 20px 0;  */
+}
+
+#content
+{
+    min-height: 600px;
+    padding: 20px 0px;
+}
+
+/* =========================== REGISTER =========================== */
+/* body {
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 23px;
+    background: rgb(161, 161, 161) ;
+} */
+
+#wp-form-register{
+    padding: 20px;
+}
+#form-register h2 {
+    font-size: 23px;
+    display: block;
+    margin: 0 auto;
+    margin: 25px 0px;
+    margin-top: 45px;
+    text-align: center;
+    color: #000;
+    /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+    /* font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
+    /* font-family: 'Times New Roman', Times, serif; */
+    /* font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; */
+    font-family: Arial, Helvetica, sans-serif;
+}
+#form-register {
+    margin: 0px auto;
+    max-width: 510px;
+    padding: 5px 20px;
+    /* border-radius: 5px; */
+    /* background-color: transparent; */
+    /* background: rgba(253, 253, 253, 0.5); */
+}
+#form-register input[type='text']{
+    margin: 5px auto;
+    width: 100%;
+    height: 50px;
+    background-color: #fff;
+    /* border: none; */
+    border: 1px solid #454444;
+    /* border-radius: 5px; */
+}
+.fullname {
+    display: flex;
+    justify-content: space-between; 
+    width: 100%;
+    /* gap: 10px; */
+    padding: 0px;
+}
+.fullname input {
+    flex: 1; 
+    /* Chia đều chiều rộng của mỗi input */
+
+    margin: 0; /* Loại bỏ khoảng trống */
+    box-sizing: border-box;
+    /* gap: 5px; */
+    padding: 0;
+}
+
+#form-register input[type='password'] {
+    /* display: block; */
+    margin: 5px auto;
+    width: 100%;
+    height: 50px;
+
+    background-color: #fff;
+    border: 1px solid #454444;
+    /* border: none; */
+    /* border-radius: 5px; */
+}
+#form-register input[type='checkbox']
+{
+    margin: 5px auto;
+/* 
+    margin-top: 5px;
+    margin-bottom: 15px; */
+}
+#form-register input[type='radio']
+{
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+#select_gender {
+    width: 100%;
+    border-radius: 0;
+    height: 50px;
+    color: #767070;
+    border: 1px solid #000;
+    margin: 5px 0 20px 0;
+}
+
+#sent_vertification_code 
+{
+    background-color: #f5f5f5bd;
+    padding: 20px;
+    border-radius: 15px;
+    margin: 10px 0;
+    line-height: 1.9;
+    color: #000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
+#img_mail 
+{
+    width: 50px;
+    height: 50px;
+}
+
+/* .container_checkbox
+{
+    display: flex;
+    align-items: flex-start; 
+}
+.checkbox_agree
+{
+    transform: scale(1.5);
+    border-radius: 0;
+}
+.label_agree {
+    display: inline-block;
+    margin-left: 5px;
+    color: #000;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+} */
+
+.custom-checkbox
+{
+    display: flex;             
+    align-items: flex-start; 
+    margin-bottom: 20px; 
+}
+.custom-checkbox input[type="checkbox"] {
+    display: none; /* Ẩn checkbox gốc */
+}
+
+.custom-checkbox .label-text
+{
+    color: #000;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+    vertical-align: top;
+    cursor: pointer;
+    /* margin-left: 10px; */
+    display: inline-block;
+}
+/* Tạo giao diện mới cho checkbox */
+.custom-checkbox .checkmark {
+    padding-right: 20px;
+    width: 22px;               
+    height: 22px;            
+    background-color: #fff;    
+    border: 1px solid #000;   
+    display: inline-block;      
+    position: relative;         /* Để điều chỉnh vị trí nếu cần */
+    border-radius: 0;   
+    margin-right: 10px;    
+    cursor: pointer;              
+}
+
+/* Giao diện khi checkbox được chọn */
+.custom-checkbox input[type="checkbox"]:checked + .checkmark {
+    background-color: #000; /* Màu nền khi chọn */
+}
+
+/* Thêm hiệu ứng cho phần tử checkmark khi được chọn */
+.custom-checkbox input[type="checkbox"]:checked + .checkmark::after {
+    content: '';
+    position: absolute;
+    left: 6px; /* Điều chỉnh vị trí của dấu tick */
+    top: 2px;  /* Điều chỉnh vị trí của dấu tick */
+    width: 5px; /* Kích thước dấu tick */
+    height: 10px; /* Kích thước dấu tick */
+    border: solid white; /* Màu sắc của dấu tick */
+    border-width: 0 2px 2px 0; /* Tạo hình dạng dấu tick */
+    transform: rotate(45deg); /* Xoay để tạo thành dấu tick */
+}
+.register_label {
+    color: #000;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+}
+
+#btn_reg {
+    color: #fff;
+    font-size: 15px;
+    /* font-family: 'Times New Roman', Times, serif; */
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background: #000;
+    width: 100%;
+    height: 50px;
+    cursor: pointer;
+    
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 7px;
+    padding: 5px;
+    border: none;
+    /* border-radius: 5px; */
+}
+#btn_reg:hover {
+    background-color: #333;
+    /* text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.8);  */
+    /* box-shadow: 0px 0px 15px #f1f10a;  */
+    /* transform: scale(1.1); */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.text_create_account {
+    line-height: 1.3;
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #000;
+}
+#moreDetailsBtn {
+    color: #000;
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+/* Modal styling */
+.modal {
+    display: none; /* Ẩn đi khi chưa kích hoạt */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 40px;
+    /* border-radius: 8px; */
+    width: 80%;
+    max-width: 700px;
+    height: auto;
+    text-align: left;
+}
+.modal-content h3 {
+    /* color: #000; */
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+    font-size: 14px;
+    margin-bottom: 7px;
+}
+.modal-content p {
+    color: #000;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+}
+.modal-close {
+    text-align: center;
+    cursor: pointer;
+    color: #000;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 0;
+    position: relative; /* Để vị trí của gạch chân được căn chỉnh */
+}
+.close-container {
+    display: inline-flex;
+    align-items: center;
+    flex-direction: column; /* Để chữ "Close" ở trên và gạch chân ở dưới */
+    cursor: pointer; /* Thêm con trỏ để chỉ thị có thể nhấn */
+}
+.underline
+{
+    width: 100%;
+    height: 1px;
+    color: #000;
+    background: #000;
+    background-color: #000;
+    position: relative; /* Để sử dụng hiệu ứng chuyển vị trí */
+    /* transition: transform 0.3s ease;  */
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Thêm hiệu ứng chuyển tiếp cho toàn bộ */
+    opacity: 1; /* Ban đầu, gạch chân sẽ hiển thị */
+    /* transform: translateY(-5px); */
+}
+.close-container:hover .underline  {
+    animation: disappear 0.5s ease; 
+}
+
+#moreDetailsBtn {
+    display: flex;
+    margin-top: 5px;
+}
+.details-container
+{
+    display: inline-flex;
+    /* align-items: center; */
+    flex-direction: column; /* Để chữ "Close" ở trên và gạch chân ở dưới */
+    cursor: pointer; /* Thêm con trỏ để chỉ thị có thể nhấn */
+    gap: -5px;
+}
+.details-container:hover .underline  {
+    animation: disappear 0.5s ease; 
+}
+/* Định nghĩa animation */
+@keyframes bounce {
+    0% { transform: translateX(5px); }
+    50% { transform: translateX(-5px); } /* Di chuyển sang trái 5px */
+    100% { transform: translateX(0); } /* Về lại vị trí ban đầu */
+}
+@keyframes disappear {
+    /* 0% { transform: translateX(0); opacity: 1; } 
+    50% { transform: translateX(10px); opacity: 0; }
+    100% { transform: translateX(10px); opacity: 0; }  */
+    0% { transform: translateX(-10px); opacity: 0; } /* Bắt đầu ở bên trái và biến mất */
+    50% { transform: translateX(10px); opacity: 0;}
+    100% { transform: translateX(0); opacity: 1; } /* Về vị trí ban đầu và hiện lên */
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #000;
+}
+
+.error_name {
+    display: flex;
+    justify-content: space-between; 
+
+}

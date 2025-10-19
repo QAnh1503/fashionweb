@@ -1,0 +1,375 @@
+    .content {
+        margin-left: 250px;
+        /* Add margin to make room for sidebar */
+        padding: 20px;
+        transition: margin-left 0.3s ease-in-out;
+    }
+
+    .content {
+        margin-left: 22%;
+        background-color: #fff;
+    }
+
+    .mt-5,
+    .my-5 {
+        margin-top: 0 !important;
+    }
+
+    .form-container {
+        background-color: rgba(255, 255, 255, 0.9);
+        /* Bright background for the form */
+        padding: 40px;
+        /* Padding around the form */
+        border-radius: 20px;
+        /* Rounded corners */
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        /* Soft shadow */
+        margin-bottom: 30px;
+        /* Space below the form */
+    }
+
+    .glass {
+        background: rgba(255, 255, 255, 0.8);
+        /* Glass effect */
+        border-radius: 15px;
+        /* Rounded corners */
+        padding: 30px;
+        /* Padding inside the form */
+        box-shadow: none;
+        /* No shadow for inner form */
+        backdrop-filter: blur(10px);
+        /* Background blur */
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        /* Soft border */
+    }
+
+    .above_title {
+        display: flex;
+        align-items: center;
+        margin-bottom: 40px;
+    }
+
+    h2 {
+        font-size: 2rem;
+        margin: 0px;
+        margin-left: 10px;
+        color: #000;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 500;
+    }
+
+    .icon_styler {
+        width: 50px;
+        height: 45px;
+        margin-left: -3px;
+    }
+
+    #productForm {
+        font-family: "Montserrat", sans-serif;
+    }
+
+    .form-label {
+        font-weight: 500;
+        color: #000;
+        font-size: 15px;
+    }
+
+    .form-control,
+    .form-select,
+    textarea {
+        border: 1px solid #eee;
+        transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .form-control:focus,
+    .form-select:focus,
+    textarea:focus {
+        border-color: #aaa;
+        box-shadow: 0 0 5px rgba(170, 170, 170, 0.5);
+    }
+
+
+    /* == Radio Button ==*/
+    /* input[type="radio"]:checked {
+            background-color: black;
+            border-color: black;
+        }
+
+        input[type="radio"] {
+            border-color: #ccc;
+            background-color: white;
+        }
+
+        input[type="radio"]:hover {
+            border-color: #aaa;
+        }
+
+        .categoy_label {
+            color: #000;
+            font-family: "Montserrat", sans-serif;
+            font-weight: 500;
+            font-size: 13px;
+            margin-right: 40px;
+        } */
+
+    /* Ẩn nút radio mặc định */
+
+    .categoy_label {
+        color: #000;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 500;
+        font-size: 13px;
+        margin-right: 40px;
+    }
+
+    input[type="radio"] {
+        display: none;
+    }
+
+    /* Tạo kiểu tùy chỉnh cho nút radio */
+    input[type="radio"]+label {
+        position: relative;
+        padding-left: 30px;
+        cursor: pointer;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 500;
+        font-size: 13px;
+        color: #000;
+    }
+
+    /* Tạo một vòng tròn cho nút radio */
+    input[type="radio"]+label:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 14px;
+        height: 14px;
+        border: 1px solid #ccc;
+        border-radius: 50%;
+        background-color: white;
+        transition: all 0.3s ease;
+    }
+
+    /* Khi radio được chọn */
+    input[type="radio"]:checked+label:before {
+        background-color: black;
+        border-color: #ccc;
+        border: 2px solid #ccc;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Tạo hiệu ứng khi hover */
+    input[type="radio"]:hover+label:before {
+        border-color: #aaa;
+        transform: translateY(-50%) scale(0.9);
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+
+
+    #subcategories {
+        display: block;
+        width: 100%;
+        height: 40px;
+        border-radius: 5px;
+        color: #686666;
+        font-size: 13px;
+    }
+
+
+
+    /* Custom File Upload */
+    .custom-label {
+        display: inline-block;
+        background-color: black;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px 0 0 5px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: background-color 0.3s;
+    }
+
+    .custom-label:hover {
+        background-color: #333;
+    }
+
+    .custom-file-input {
+        display: none;
+    }
+
+    #file-name {
+        margin-left: 10px;
+        font-size: 14px;
+        color: #333;
+    }
+
+    #file-name-addtion {
+        margin-left: 10px;
+        font-size: 14px;
+        color: #333;
+    }
+
+    .custom_btn {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .custom_btn button {
+        background: #000;
+        border-color: unset;
+        border-radius: 6px;
+        transition: transform 0.3s ease;
+    }
+
+    .custom_btn button:hover {
+        border-color: unset;
+        background: #000;
+        transform: scale(0.94);
+        opacity: 0.8;
+    }
+
+    .custom_btn button:focus {
+        background: #000;
+
+    }
+
+    .custom_btn button:focus,
+    .custom_btn button:active {
+        background: #000 !important;
+        outline: none !important;
+        box-shadow: none !important;
+    }
+
+
+    .table_container {
+        width: 100%;
+        overflow-x: auto;
+        /* Thêm thanh cuộn ngang nếu bảng lớn hơn container */
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+
+    .table {
+        background-color: #fff;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        /* Chiếm toàn bộ chiều rộng container */
+        border-collapse: collapse;
+        /* Gộp các viền lại */
+    }
+
+    .table th,
+    .table td {
+        vertical-align: middle;
+        padding: 8px;
+        text-align: center;
+        border: none;
+        /* No borders for a cleaner look */
+
+        word-wrap: break-word;
+        /* Ngắt dòng nếu nội dung quá dài */
+    }
+
+    .table th {
+        background-color: #f8f9fa;
+        font-weight: 550;
+        font-size: 15px;
+        word-wrap: break-word;
+        /* Ngắt dòng nếu nội dung quá dài */
+    }
+
+    .btn {
+        border-radius: 20px;
+        /* Rounded button corners */
+        padding: 10px 20px;
+        /* Button padding */
+        transition: background-color 0.3s;
+        /* Smooth transition */
+    }
+
+
+
+    .btn-warning {
+        background-color: #ffbf00;
+        border: none;
+        font-size: 13px;
+        padding: 4px 10px;
+        transition: transform 0.3s ease;
+    }
+
+    .btn-danger {
+        background-color: #dc2b3c;
+        border: none;
+        font-size: 13px;
+        padding: 4px 10px;
+        transition: transform 0.3s ease;
+    }
+
+    .btn-warning:hover {
+        background-color: #e0a800;
+        transform: scale(0.94);
+    }
+
+    .btn-danger:hover {
+        background-color: #c82333;
+        transform: scale(0.94);
+    }
+
+    #notification {
+        margin-top: 20px;
+    }
+
+
+    #searchContainer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 900px;
+    }
+
+    #search {
+        border-radius: 15px;
+        margin-left: 16px;
+        width: 93%;
+        box-shadow: 0 4px 8px rgb(0 0 0 / 8%);
+    }
+
+    #searchContainer button {
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        background: #000;
+        color: #fff;
+        font-size: 20px;
+        border: none;
+        transition: all 0.7s ease;
+    }
+
+    #searchContainer button:hover {
+        background: #fff;
+        color: #000;
+        box-shadow: 0 4px 8px rgb(0 0 0 / 8%);
+    }
+
+
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        h2 {
+            font-size: 1.5rem;
+        }
+
+        .form-control,
+        .form-select {
+            font-size: 0.9rem;
+        }
+
+        .table th,
+        .table td {
+            font-size: 0.9rem;
+        }
+    }

@@ -1,14 +1,14 @@
 <?php
 ob_start();
 session_start();
-// require "../db/connect.php";
-// require "../db/database.php";
-// require "../lib/validation.php";
 require "../../db/connect.php";
 require "../../db/database.php";
 require "../../lib/validation.php";
 
 $OTP = $_SESSION['OTP'];
+$email = $_SESSION['email'] ?? '';
+
+
 // echo $OTP;
 // if (isset($_POST['btn_reg'])) {
 //     $error = array();
@@ -270,7 +270,8 @@ $OTP = $_SESSION['OTP'];
                         <img id="img_mail" style="width: 20px; height: 20px; margin-bottom: 10px"
                             src="../public/img/Mail.png" alt="Mail">
                         <p><strong>We've sent a verification code to: </strong></p>
-                        <p>nguyenhuuquynhanh2@gmail.com</p>
+                        <p><?php echo htmlspecialchars($email); ?></p>
+
                     </div>
 
                     <!-- <label for="fullname">Fullname: </label> -->

@@ -7,62 +7,48 @@ ob_start();
 require "../../db/connect.php";
 require "../../db/database.php";
 require "../../lib/validation.php";
-if (isset($_POST['btn_login'])) {
-    $error = array();
 
-    redirect_to('home.php');
-    // email
-    // if (empty($_POST['email']))
-    //     $error['email'] = "This field is mandatory.<br>";
-    // else {
-    //     if (is_email($_POST['email']))
-    //         $email = $_POST['email'];
-    //     else
-    //         $error['email'] = "Invalid email. Please try again.";
-    // }
+$error = [];
+$email = '';
+$password = '';
 
-    // password
-    // if (empty($_POST['password']))
-    //     $error['password'] = "This field is mandatory.<br>";
-    // else {
-    //     if (!(strlen($_POST['password']) >= 6 && strlen($_POST['password']) <= 32)) {
-    //         $error['password'] = "The length of character request form 6 to 32.";
-    //     } else {
-    //         if (is_password($_POST["password"]))
-    //             $pass = $_POST["password"];
-    //         else
-    //             $error["password"] = "Invalid password. Please try again.";
-    //     }
-    // }
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $email = trim($_POST['email'] ?? '');
+    $password = trim($_POST['password'] ?? '');
 
+    // --- Email ---
+    if (empty($email)) {
+        $error['email'] = "This field is mandatory.";
+    } elseif (!is_email($email)) {
+        $error['email'] = "Invalid email. Please try again.";
+    }
 
+    // --- Password ---
+    if (empty($password)) {
+        $error['password'] = "This field is mandatory.";
+    } elseif (!(strlen($password) >= 3 && strlen($password) <= 32)) {
+        $error['password'] = "Password must be between 3 and 32 characters.";
+    }
 
+    // --- Chỉ chạy khi không có lỗi ---
+    if (empty($error)) {
+        $query = "SELECT * FROM tbl_users WHERE email = $1 LIMIT 1";
+        $result = pg_query_params($connection, $query, [$email]);
 
-    // $list_users = db_fetch_array("SELECT * FROM `tbl_users`");
-    // if (empty($error)) {
-       
-    //     echo "Empty Error!";
-
-    //     if (is_array($list_users)) {
-    //         foreach ($list_users as $user) {
-    //             if ($email == $user['email'] && md5($pass) == $user['password']) {
-    //                 echo "echo Login sucessfully!";
-    //                 //============ Lưu trữ phiên đăng nhập ==============
-    //                 $_SESSION['is_login'] = true;
-    //                 $_SESSION['email_login'] = $email;
-
-    //                 if (isset($_POST['remember_me'])) {
-    //                     setcookie('is_login', true, time() + 3600, '/');
-    //                     setcookie('email_login', $email, time() + 3600, '/');
-    //                 } 
-                  
-    //                 redirect_to('home.php');
-    //             } else
-    //                 echo "Invalid email or pass.";
-    //         }
-    //     } else
-    //         $error['account'] = "Email or Password is not exist!";
-    // }
+        if ($result && pg_num_rows($result) > 0) {
+            $user = pg_fetch_assoc($result);
+            if (md5($password) == $user['password']) {
+                $_SESSION['is_login'] = true;
+                $_SESSION['email_login'] = $email;
+                header("Location: home.php");
+                exit();
+            } else {
+                $error['account'] = "Invalid email or password.";
+            }
+        } else {
+            $error['account'] = "Invalid email or password.";
+        }
+    }
 }
 ?>
 
@@ -183,7 +169,7 @@ if (isset($_POST['btn_login'])) {
             <div id="form-login">
                 <h2>LOGIN</h2>
                 <form action="" id="form-user-pass" method="POST">
-                    <input type="text" name="email" value="" placeholder="Email">
+                    <input type="text" name="email" value="<?php echo htmlspecialchars($email); ?>" placeholder="Email">
                     <?php echo form_error('email'); ?><br>
 
                     <input type="password" name="password" value="" placeholder="Password">

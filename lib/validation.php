@@ -1,31 +1,22 @@
 <?php
-    // is_username 
-    function is_username($username)
-    {
-        $partten= " /^[A-Za-z0-9_\.]{6,32}$/";
-        if ( !preg_match($partten, $_POST['username'], $matchs))
-            return false;
-        return true;
-    }
-
-    // is_password
     function is_password($password)
-    {
-        $partten= "/^([A-Z]){1}([\w_\.!@#$%^&*()]+){5,31}$/";
-        if (!preg_match($partten, $_POST['password'], $matchs))
-            return false;
-        return true;
-    }
+{
+    $pattern = "/^([A-Z]){1}([\w_\.!@#$%^&*()]+){5,31}$/";
+    return preg_match($pattern, $password);
+}
 
-    // is_email
-    function is_email($email)
-    {
-        // Mẫu regex cho email hợp lệ
-        $pattern = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/";
-        if (!preg_match($pattern, $_POST['email'], $matchs))
-            return false;
-        return true;
-    }
+function is_email($email)
+{
+    $pattern = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/";
+    return preg_match($pattern, $email);
+}
+
+function is_username($username)
+{
+    $pattern = "/^[A-Za-z0-9_\.]{6,32}$/";
+    return preg_match($pattern, $username);
+}
+
 
     // is_phone
     function is_phone($phone)

@@ -12,7 +12,7 @@ $host = "localhost";
 $port = "5432";
 $dbname = "fashionweb";
 $user = "postgres";
-$password = "mypass123"; // thay bằng mật khẩu của bạn
+$password = "mypass123";
 
 // try {
 //     // Kết nối bằng PDO

@@ -175,10 +175,10 @@ $cart_id_active = 0;
         href="https://fonts.googleapis.com/css2?family=Abel&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Play:wght@400;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Shadows+Into+Light&family=Space+Grotesk:wght@300..700&family=Tajawal:wght@200;300;400;500;700;800;900&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="/unitop-php/fashionweb/public/css/reset.css" type="text/css">
-    <link rel="stylesheet" href="/unitop-php/fashionweb/public/css/inc/header_home.css" type="text/css">
-    <link rel="stylesheet" href="/unitop-php/fashionweb/public/css/users.css" type="text/css">
-    <script defer src="/unitop-php/fashionweb/public/js/script.js"></script>
+    <link rel="stylesheet" href="/fashionweb/public/css/reset.css" type="text/css">
+    <link rel="stylesheet" href="/fashionweb/public/css/inc/header_home.css" type="text/css">
+    <link rel="stylesheet" href="/fashionweb/public/css/users.css" type="text/css">
+    <script defer src="/fashionweb/public/js/script.js"></script>
     <!-- <script defer src="../public/js/header.js"></script> -->
 
 
@@ -400,12 +400,12 @@ $cart_id_active = 0;
                     <div class="hover_content">
                         <div
                             style="width: 300px;text-align: left;display: flex; flex-direction: column;justify-content: space-between;">
-                            <img style="width: 100%;height: 100%;" src="/unitop-php/fashionweb/public/img/menu_bar/GIFT.jpg"
+                            <img style="width: 100%;height: 100%;" src="/fashionweb/public/img/menu_bar/GIFT.jpg"
                                 alt="beauty.jpg">
                         </div>
                         <div style="width: 500px;">
                             <img style="width: 100%;height: 150px;margin-bottom: 10px;"
-                                src="/unitop-php/fashionweb/public/img/menu_bar/81b88cd18000cb4793a07aaa3b5d5388.jpg" alt="beauty.jpg">
+                                src="/fashionweb/public/img/menu_bar/81b88cd18000cb4793a07aaa3b5d5388.jpg" alt="beauty.jpg">
 
                             <div class="left_column" style="width: 100%;height: 150px;">
                                 <h4>GIFT FOR LOVER</h4>
@@ -455,9 +455,9 @@ $cart_id_active = 0;
                         <div
                             style="width: 180px;text-align: left;display: flex; flex-direction: column;justify-content: space-between;">
                             <img style="width: 100%;height: 150px;"
-                                src="/unitop-php/fashionweb/public/img/menu_bar/87ef78d6eb07868c59d5357839f5f914.jpg" alt="beauty.jpg">
+                                src="/fashionweb/public/img/menu_bar/87ef78d6eb07868c59d5357839f5f914.jpg" alt="beauty.jpg">
                             <img style="width: 100%;height: 150px;"
-                                src="/unitop-php/fashionweb/public/img/menu_bar/7ea12b4bb0c32d65cf71423ad22a748a.jpg" alt="beauty.jpg">
+                                src="/fashionweb/public/img/menu_bar/7ea12b4bb0c32d65cf71423ad22a748a.jpg" alt="beauty.jpg">
                         </div>
                     </div>
                 </li>
@@ -556,7 +556,7 @@ $cart_id_active = 0;
                 </li> -->
                 <li class="menu_item"><a href="">Other</a>
                     <div class="hover_content">
-                        <img style="width: 300px;" src="/unitop-php/fashionweb/public/img/menu_bar/beauty.jpg" alt="beauty.jpg">
+                        <img style="width: 300px;" src="/fashionweb/public/img/menu_bar/beauty.jpg" alt="beauty.jpg">
                         <div class="left_column">
                             <h4>BEAUTY</h4>
                             <ul>
@@ -569,13 +569,13 @@ $cart_id_active = 0;
                             </ul>
                         </div>
                         <img style="width: 330px;display: block;"
-                            src="/unitop-php/fashionweb/public/img/menu_bar/z6060201879885_53510a860588dc9c3c9497faa904c390.jpg"
+                            src="/fashionweb/public/img/menu_bar/z6060201879885_53510a860588dc9c3c9497faa904c390.jpg"
                             alt="beauty.jpg">
                         <div>
                             <img style="width: 150px;display: block;margin-bottom: 11px;"
-                                src="/unitop-php/fashionweb/public/img/menu_bar/pexels-photo-1190829.webp" alt="beauty.jpg">
+                                src="/fashionweb/public/img/menu_bar/pexels-photo-1190829.webp" alt="beauty.jpg">
                             <img style="width: 150px;display: block; height:200px"
-                                src="/unitop-php/fashionweb/public/img/menu_bar/pexels-photo-965990.webp" alt="beauty.jpg">
+                                src="/fashionweb/public/img/menu_bar/pexels-photo-965990.webp" alt="beauty.jpg">
                         </div>
                         <div class="right_column">
                             <h4>FRAGRANCES</h4>
@@ -658,7 +658,7 @@ $cart_id_active = 0;
                 <li>
                     <!-- Open Btn -->
                     <button style="position: relative;" id="open_cart_btn">
-                        <img src="/unitop-php/fashionweb/public/img/shop-cart-white.png" alt="shop-cart"
+                        <img src="/fashionweb/public/img/shop-cart-white.png" alt="shop-cart"
                             style="width:19px; height:19px ;color: #000;">
                         <span
                             style="position: absolute;top: -5px;font-size: 12px;color:#fff"><?php echo $quantity_carts ?></span>
@@ -703,7 +703,7 @@ $cart_id_active = 0;
 
                     <div class="hover_content_user">
                         <div class="user_active_infor">
-                            <?php $user_img_none="/unitop-php/fashionweb/public/img/account/user.png" ?>
+                            <?php $user_img_none="/fashionweb/public/img/account/user.png" ?>
                             <img src="<?php if (!empty($img_user_active)) echo "../public/img/account/".$img_user_active;
                                             else echo $user_img_none ?>" alt="img_user_active">
                             <p><?php echo $account_type_active ?></p>

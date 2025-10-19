@@ -653,7 +653,7 @@ if ($stateCart!="Checkout")
                         <div class="right_column">
                             <h4>FRAGRANCES</h4>
                             <ul>
-                                <li style="display: block;"><a style=' padding: 0 !important;font-family: "Montserrat", sans-serif !important;font-size: 13px !important;font-weight: 400 !important;width: fit-content !important; color#000; text-decoration:none !important; text-decoration:unset !important' href="../modules/purchase_history.php">View Purchase History</a></li>
+                                <li style="display: block;"><a style=' padding: 0 !important;font-family: "Montserrat", sans-serif !important;font-size: 13px !important;font-weight: 400 !important;width: fit-content !important; color: #000; text-decoration:none !important; text-decoration:unset !important' href="../modules/purchase_history.php">View Purchase History</a></li>
                                 <li style="display: block;"><a style=' padding: 0 !important;font-family: "Montserrat", sans-serif !important;font-size: 13px !important;font-weight: 400 !important;width: fit-content !important; color: #000;text-decoration:none' href="../modules/discover.php">Discover More</a></li>
 
                                 <li style="display: block;">Women's Fragrances</li>
@@ -861,7 +861,7 @@ if ($stateCart!="Checkout")
                         <div class="right_column">
                             <h4>FRAGRANCES</h4>
                             <ul>
-                                <li style="display: block;"><a style=' padding: 0 !important;font-family: "Montserrat", sans-serif !important;font-size: 13px !important;font-weight: 400 !important;width: fit-content !important; color#000; text-decoration:none !important; text-decoration:unset !important' href="../modules/purchase_history.php">View Purchase History</a></li>
+                                <li style="display: block;"><a style=' padding: 0 !important;font-family: "Montserrat", sans-serif !important;font-size: 13px !important;font-weight: 400 !important;width: fit-content !important; color: #000; text-decoration:none !important; text-decoration:unset !important' href="../modules/purchase_history.php">View Purchase History</a></li>
                                 <li style="display: block;"><a style=' padding: 0 !important;font-family: "Montserrat", sans-serif !important;font-size: 13px !important;font-weight: 400 !important;width: fit-content !important; color: #000;text-decoration:none' href="../modules/discover.php">Discover More</a></li>
 
                                 <li style="display: block;">Women's Fragrances</li>

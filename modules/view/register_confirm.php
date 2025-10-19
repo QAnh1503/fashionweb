@@ -47,10 +47,10 @@ if (isset($_POST['btn_next'])) {
 
         $OTPcode = $num;
         $_SESSION['OTP'] = $OTPcode;
+        $_SESSION['email'] = $email;
         echo $OTPcode;
         redirect_to('register.php');
-    } else
-        print_r($error);
+    }
 }
 
 ?>

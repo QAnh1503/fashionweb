@@ -1,9 +1,9 @@
 <?php
 
 // $list_array = db_fetch_array("SELECT * FROM `bags_women`");
-$list_array = db_fetch_array("SELECT * FROM `product`");
+$list_array = db_fetch_array("SELECT * FROM product");
 // $num_rows = db_num_rows("SELECT * FROM `bags_women`");
-$num_rows = db_num_rows("SELECT * FROM `product`");
+$num_rows = db_num_rows("SELECT * FROM product");
 
 // $subcategories = array();
 // foreach ($list_array as $item) {
@@ -39,16 +39,16 @@ $list_subcategory_items = array();
 $num_rows_subcategory_items = 0;
 
 if (!empty($category) && !empty($subcategory)) {
-    $list_subcategory_items = db_fetch_array("SELECT * FROM `product` WHERE `category`='{$category}' AND `subcategory`='{$subcategory}'");
-    $num_rows_subcategory_items = db_num_rows("SELECT * FROM `product` WHERE `category`='{$category}' AND `subcategory`='{$subcategory}'");
+    $list_subcategory_items = db_fetch_array("SELECT * FROM product WHERE category='{$category}' AND subcategory='{$subcategory}'");
+    $num_rows_subcategory_items = db_num_rows("SELECT * FROM product WHERE category='{$category}' AND subcategory='{$subcategory}'");
 }
 if ($category == "GIFT") {
-    $list_subcategory_items = db_fetch_array("SELECT * FROM `product` WHERE `subcategory`='{$subcategory}'");
-    $num_rows_subcategory_items = db_num_rows("SELECT * FROM `product` WHERE `subcategory`='{$subcategory}'");
+    $list_subcategory_items = db_fetch_array("SELECT * FROM product WHERE subcategory='{$subcategory}'");
+    $num_rows_subcategory_items = db_num_rows("SELECT * FROM product WHERE subcategory='{$subcategory}'");
 }
 if (!empty($category) && empty($subcategory)) {
-    $list_subcategory_items = db_fetch_array("SELECT * FROM `product` WHERE `category`='{$category}'");
-    $num_rows_subcategory_items = db_num_rows("SELECT * FROM `product` WHERE `category`='{$category}'");
+    $list_subcategory_items = db_fetch_array("SELECT * FROM product WHERE category='{$category}'");
+    $num_rows_subcategory_items = db_num_rows("SELECT * FROM product WHERE category='{$category}'");
 }
 // print_r($list_subcategory_items);
 // $subcategory = '';
@@ -81,11 +81,11 @@ $list_variants = array();
 if (isset($_GET['variant'])) {
     $variant = $_GET['variant'];
     if ($category == "GIFT") {
-        $list_subcategory_items = db_fetch_array("SELECT * FROM `product` WHERE `variant`='{$variant}'");
-        $num_rows_subcategory_items = db_num_rows("SELECT * FROM `product` WHERE `variant`='{$variant}'");
+        $list_subcategory_items = db_fetch_array("SELECT * FROM product WHERE variant='{$variant}'");
+        $num_rows_subcategory_items = db_num_rows("SELECT * FROM product WHERE variant='{$variant}'");
     } else {
-        $list_subcategory_items = db_fetch_array("SELECT * FROM `product` WHERE `category`='{$category}' AND `variant`='{$variant}'");
-        $num_rows_subcategory_items = db_num_rows("SELECT * FROM `product` WHERE `category`='{$category}' AND `variant`='{$variant}'");
+        $list_subcategory_items = db_fetch_array("SELECT * FROM product WHERE category='{$category}' AND variant='{$variant}'");
+        $num_rows_subcategory_items = db_num_rows("SELECT * FROM product WHERE category='{$category}' AND variant='{$variant}'");
     }
 }
 
@@ -155,7 +155,7 @@ if (isset($_POST['price_filter_increase'])) {
 // }
 
 
-require '../modules/contact_us.php';
+require_once __DIR__ . '/../modules/view/contact_us.php';
 
 // echo "COOKIE: " . $_COOKIE['email_login'];
 
@@ -167,11 +167,11 @@ $img_user_active = "";
 $account_type_active = "";
 $cart_id_active = 0;
 
-$tbl_users = db_fetch_array("SELECT * FROM `tbl_users`");
-$tbl_carts = db_fetch_array("SELECT * FROM `carts`");
+$tbl_users = db_fetch_array("SELECT * FROM tbl_users");
+$tbl_carts = db_fetch_array("SELECT * FROM carts");
 foreach ($tbl_users as $item) {
     if ($item['email'] == $_SESSION['email_login']) {
-        $user_id_active = $item['account_id'];
+        $user_id_active = $item['user_id'];
         $username_active = $item['username'];
         $img_user_active .= $item['account_image'];
         $account_type_active = $item['account_types'];
@@ -185,8 +185,8 @@ foreach ($tbl_carts as $item) {
 }
 // echo "Cart Id Active: " . $cart_id_active;
 
-$list_carts = db_fetch_array("SELECT * FROM `cart_items` where `cart_id`={$cart_id_active}");
-$carts = db_fetch_array("SELECT * FROM `carts` where `cart_id`={$cart_id_active}");
+$list_carts = db_fetch_array("SELECT * FROM cart_items where cart_id={$cart_id_active}");
+$carts = db_fetch_array("SELECT * FROM carts where cart_id={$cart_id_active}");
 $stateCart="Active";
 foreach ($carts as $cart)
 {
@@ -195,7 +195,7 @@ foreach ($carts as $cart)
         $stateCart="Checkout";
     }
 }
-$num_row_carts = db_num_rows("SELECT * FROM `cart_items` where `cart_id`={$cart_id_active}");
+$num_row_carts = db_num_rows("SELECT * FROM cart_items where cart_id={$cart_id_active}");
 
 $quantity_carts = 0;
 if ($stateCart!="Checkout")
@@ -264,11 +264,11 @@ if ($stateCart!="Checkout")
         href="https://fonts.googleapis.com/css2?family=Abel&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Play:wght@400;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Shadows+Into+Light&family=Space+Grotesk:wght@300..700&family=Tajawal:wght@200;300;400;500;700;800;900&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="../public/css/reset.css" type="text/css">
-    <link rel="stylesheet" href="../public/css/inc/header.css" type="text/css">
+    <link rel="stylesheet" href="../../public/css/reset.css" type="text/css">
+    <link rel="stylesheet" href="../../public/css/inc/header.css" type="text/css">
     <!-- <link rel="stylesheet" href="../public/css/users.css" type="text/css"> -->
-    <script defer src="../public/js/script.js"></script>
-    <script defer src="../public/js/header.js"></script>
+    <script defer src="../../public/js/script.js"></script>
+    <script defer src="../../public/js/header.js"></script>
 
 
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">

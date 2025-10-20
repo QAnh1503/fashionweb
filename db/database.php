@@ -52,22 +52,39 @@ function db_insert($table, $data) {
 
 function db_update($table, $data, $where) {
     global $connection;
+
+    if (empty($data)) return 0; // không có gì để update
+
     $updates = [];
     foreach ($data as $col => $value) {
         $updates[] = "$col='" . pg_escape_string($connection, $value) . "'";
     }
+
     $update_str = implode(", ", $updates);
     $query = "UPDATE $table SET $update_str WHERE $where";
+
     $result = pg_query($connection, $query);
+
     if (!$result) {
         die("❌ Update error: " . pg_last_error($connection));
     }
+
     return pg_affected_rows($result);
 }
 
-function db_delete($table, $where) {
-    $query = "DELETE FROM $table WHERE $where";
+
+// function db_delete($table, $where) {
+//     $query = "DELETE FROM $table WHERE $where";
+//     $result = db_query($query);
+//     return pg_affected_rows($result);
+// }
+function db_delete($table, $where = null) {
+    $query = "DELETE FROM $table";
+    if ($where) {
+        $query .= " WHERE $where";
+    }
     $result = db_query($query);
     return pg_affected_rows($result);
 }
+
 ?>

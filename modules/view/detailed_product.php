@@ -22,7 +22,7 @@ foreach ($list_product_details as $product) {
     }
 }
 
-$img_path = "../public/img/";
+$img_path = "../../public/img/";
 if ($product_details['subcategory'] == "Bag") {
     $img_path .= "bags/";
 } else if ($product_details['subcategory'] == "Shoes") {
@@ -44,7 +44,7 @@ $list_array = db_fetch_array("SELECT *FROM product");
 $num_rows = db_num_rows("SELECT * FROM product");
 
 $ids = array();
-// $list_items_cart = db_fetch_array("SELECT * FROM `cart_items`");
+$list_items_cart = db_fetch_array("SELECT * FROM cart_items");
 $user_id_active = 0;
 $cart_id_active = 0;
 $status_cart="";
@@ -56,11 +56,30 @@ foreach ($tbl_users as $item) {
     }
 }
 // echo "User Id Active: " . $user_id_active;
-foreach ($tbl_carts as $item) {
-    if ($item['user_id'] == $user_id_active) {
-        $cart_id_active = $item['cart_id'];
-        $status_cart=$item['status'];
-    }
+// if ($cart_id_active == 0) { // user has no cart yet
+//     $dataCarts = array(
+//         'user_id' => $user_id_active,
+//     );
+//     db_insert("carts", $dataCarts);
+
+//     // fetch the new cart_id
+//     $cart_id_active = db_fetch_row("SELECT cart_id FROM carts WHERE user_id='{$user_id_active}'")['cart_id'];
+// }
+// Check if user already has a cart
+$cart = db_fetch_row("SELECT cart_id FROM carts WHERE user_id = '{$user_id_active}' LIMIT 1");
+
+if (!$cart) {
+    // If no cart exists, create one
+    $dataCarts = array(
+        'user_id' => $user_id_active,
+    );
+    db_insert("carts", $dataCarts);
+
+    // Get the new cart_id
+    $cart_id_active = db_fetch_row("SELECT cart_id FROM carts WHERE user_id = '{$user_id_active}'")['cart_id'];
+} else {
+    // If cart exists, use it
+    $cart_id_active = $cart['cart_id'];
 }
 // echo "Cart Id Active: " . $cart_id_active;
 
@@ -73,7 +92,7 @@ if (empty($list_items_cart))
 if (isset($_POST['add_to'])) {
     // $ids = array_column($list_items_cart, 'id');
     foreach ($list_items_cart as $cart) {
-        $ids[] = $cart['id'];
+        $ids[] = $cart['cart_item_id']; // dùng đúng cột
     }
     if (!empty($list_items_cart) && $status_cart!="Checkout")
     {
@@ -82,27 +101,33 @@ if (isset($_POST['add_to'])) {
             'update_at' => $dateUpdate
         );
         if (!in_array($_GET['id'], $ids)) {
+            // $data = array(
+            //     'id' => $product_details['id'],
+            //     'cart_id' => $cart_id_active,
+            //     'name' => $product_details['name'],
+            //     'category' => $product_details['category'],
+            //     'subcategory' => $product_details['subcategory'],
+            //     'variant' => $product_details['variant'],
+            //     'price' => $product_details['price'],
+            //     // 'color' => $product_details['color'],
+            //     'description' => $product_details['description'],
+            //     'product_image_1' => $product_details['product_image_1'],
+            //     'product_image_2' => $product_details['product_image_2'],
+            //     'quantity' => 1
+            // );
             $data = array(
-                'id' => $product_details['id'],
                 'cart_id' => $cart_id_active,
-                'name' => $product_details['name'],
-                'category' => $product_details['category'],
-                'subcategory' => $product_details['subcategory'],
-                'variant' => $product_details['variant'],
-                'price' => $product_details['price'],
-                'color' => $product_details['color'],
-                'description' => $product_details['description'],
-                '`product_image_1`' => $product_details['product_image_1'],
-                '`product_image_2`' => $product_details['product_image_2'],
+                'product_id' => $product_details['product_id'],
                 'quantity' => 1
             );
+
             $id_insert = db_insert("cart_items", $data);
-            db_update('carts', $dataDate, "`cart_id`={$cart_id_active}");
+            // db_update('carts', $dataDate, "cart_id={$cart_id_active}");
         }
         else {
             foreach ($list_items_cart as $cart)
             {
-                if ($id == $cart['id'])
+                if ($id == $cart['product_id'])
                 {
                     $cart_qty= $cart['quantity']+1;
                     $data= array (
@@ -112,8 +137,8 @@ if (isset($_POST['add_to'])) {
                     // $dataDate= array(
                     //     'update_at' => $dateUpdate
                     // );
-                    db_update('cart_items', $data,  "`id`={$id} AND `cart_id`={$cart_id_active}");
-                    db_update('carts', $dataDate, "`cart_id`={$cart_id_active}");
+                    // db_update('cart_items', $data, "product_id={$id} AND cart_id={$cart_id_active}");
+                    // db_update('carts', $dataDate, "cart_id={$cart_id_active}");
                     break;
                 }
             }
@@ -121,16 +146,12 @@ if (isset($_POST['add_to'])) {
     }
     else
     {
-        $dateCreate= date('Y-m-d');
         $dataCarts= array(
             'user_id' => $user_id_active,
-            'create_at' => $dateCreate,
-            'update_at' => $dateCreate,
-            'status' => 'Active'
         );
         db_insert("carts", $dataCarts);
         $cart_id=0;
-        $carts= db_fetch_array("SELECT * FROM `carts` where `user_id`={$user_id_active}");
+        $carts= db_fetch_array("SELECT * FROM carts where user_id= '{$user_id_active}'");
         foreach ($carts as $item)
         {
             if ($item['user_id']== $user_id_active)
@@ -140,18 +161,23 @@ if (isset($_POST['add_to'])) {
         }
         echo  " $cart_id : ".$cart_id;
 
+        // $data = array(
+        //     'id' => $product_details['product_id'],
+        //     'cart_id' => $cart_id,
+        //     'name' => $product_details['name'],
+        //     'category' => $product_details['category'],
+        //     'subcategory' => $product_details['subcategory'],
+        //     'variant' => $product_details['variant'],
+        //     'price' => $product_details['price'],
+        //     // 'color' => $product_details['color'],
+        //     'description' => $product_details['description'],
+        //     'product_image_1' => $product_details['product_image_1'],
+        //     'product_image_2' => $product_details['product_image_2'],
+        //     'quantity' => 1
+        // );
         $data = array(
-            'id' => $product_details['id'],
             'cart_id' => $cart_id,
-            'name' => $product_details['name'],
-            'category' => $product_details['category'],
-            'subcategory' => $product_details['subcategory'],
-            'variant' => $product_details['variant'],
-            'price' => $product_details['price'],
-            'color' => $product_details['color'],
-            'description' => $product_details['description'],
-            '`product_image_1`' => $product_details['product_image_1'],
-            '`product_image_2`' => $product_details['product_image_2'],
+            'product_id' => $product_details['product_id'],
             'quantity' => 1
         );
         $id_insert = db_insert("cart_items", $data);        
@@ -233,7 +259,7 @@ require "../../inc/header.php";
     <div id="above_part">
         <div id="img_collage">
 
-            <img src="../public/img/<?php
+            <img src="../../public/img/<?php
             if ($product_details['subcategory'] == "Bag") {
                 echo "bags/";
             } else if ($product_details['subcategory'] == "Shoes") {
@@ -248,7 +274,7 @@ require "../../inc/header.php";
             echo $product_details['product_image_1'];
             ?>" alt="<?php echo $product_details['product_image_1'] ?>">
 
-            <img src="../public/img/<?php
+            <img src="../../public/img/<?php
             if ($product_details['subcategory'] == "Bag") {
                 echo "bags/";
             } else if ($product_details['subcategory'] == "Shoes") {
@@ -523,7 +549,7 @@ require "../../inc/header.php";
                 </div>
             </div>
             <div class="imgProd" style="max-width: 270px;margin-left: 40px;">
-                <img style="width: 100%;height:100%" src="../public/img/<?php
+                <img style="width: 100%;height:100%" src="../../public/img/<?php
                 if ($product_details['subcategory'] == "Bag") {
                     echo "bags/";
                 } else if ($product_details['subcategory'] == "Shoes") {
@@ -539,7 +565,7 @@ require "../../inc/header.php";
                 ?>" alt="<?php echo $product_details['product_image_1'] ?>">
 
                 <div class="commitment">
-                    <img src="../public/img/worldwide.png" alt="worldwide.png">
+                    <img src="../../public/img/worldwide.png" alt="worldwide.png">
                     <span class="commitment" id="personalize">Our Commitment</span>
                 </div>
             </div>
@@ -592,7 +618,7 @@ require "../../inc/header.php";
                         <div class="card-item swiper-slide">
 
                             <?php
-                            $img_pathItem = "../public/img/";
+                            $img_pathItem = "../../public/img/";
                             if ($item['subcategory'] == "Bag") {
                                 $img_pathItem .= "bags/";
                             } else if ($item['subcategory'] == "Shoes") {

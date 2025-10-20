@@ -190,10 +190,10 @@ $carts = db_fetch_array("SELECT * FROM carts where cart_id={$cart_id_active}");
 $stateCart="Active";
 foreach ($carts as $cart)
 {
-    if ($cart['status']=="Checkout")
-    {
-        $stateCart="Checkout";
-    }
+    // if ($cart['status']=="Checkout")
+    // {
+    //     $stateCart="Checkout";
+    // }
 }
 $num_row_carts = db_num_rows("SELECT * FROM cart_items where cart_id={$cart_id_active}");
 
@@ -897,10 +897,42 @@ if ($stateCart!="Checkout")
 
                     <!-- Open Btn -->
                     <button style="position: relative;" id="open_cart_btn">
-                        <img src="../public/img/shop-cart.png" alt="shop-cart"
+                        <img src="http://localhost/fashionweb/public/img/shop-cart.png" alt="shop-cart"
                             style="width:15px; height:17px ;color: #000;">
                         <span style="position: absolute;top: -5px;font-size: 11px;"><?php echo $quantity_carts ?></span>
                     </button>
+                    <script>
+                        // ================================= SHOPPING CART =================================
+                        const openBtn = document.getElementById('open_cart_btn')
+                        const cart = document.getElementById('sidecart')
+                        const closeBtnCart = document.getElementById('close_btn')
+                        const backdrop = document.querySelector('.backdrop')
+                        // const itemEl = document.querySelector('.items')
+
+                        openBtn.addEventListener('click', openCart)
+                        closeBtnCart.addEventListener('click', closeCart)
+                        backdrop.addEventListener('click', closeCart)
+
+                        //Open Cart
+                        function openCart() {
+                            cart.classList.add('open')
+                            backdrop.style.display = 'block'
+
+                            setTimeout(() => {
+                                backdrop.classList.add('show')
+                            }, 0)
+                        }
+
+                        //Close Cart
+                        function closeCart() {
+                            cart.classList.remove('open')
+                            backdrop.classList.remove('show')
+
+                            setTimeout(() => {
+                                backdrop.style.display = 'none'
+                            }, 500);
+                        }
+                    </script>
 
                 </li>
                 <li class="side_menu_user">
@@ -909,7 +941,7 @@ if ($stateCart!="Checkout")
 
                     <div class="hover_content_user">
                         <div class="user_active_infor">
-                            <?php $user_img_none="../public/img/account/user.png" ?>
+                            <?php $user_img_none="../../public/img/account/user.png" ?>
                             <img src="<?php if (!empty($img_user_active)) echo "../public/img/account/".$img_user_active;
                                             else echo $user_img_none ?>" alt="img_user_active">
                             <p><?php echo $account_type_active ?></p>

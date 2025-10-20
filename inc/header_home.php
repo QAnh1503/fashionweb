@@ -658,7 +658,7 @@ $cart_id_active = 0;
                 <li>
                     <!-- Open Btn -->
                     <button style="position: relative;" id="open_cart_btn">
-                        <img src="/fashionweb/public/img/shop-cart-white.png" alt="shop-cart"
+                        <img src="http://localhost/fashionweb/public/img/shop-cart-white.png" alt="shop-cart"
                             style="width:19px; height:19px ;color: #000;">
                         <span
                             style="position: absolute;top: -5px;font-size: 12px;color:#fff"><?php echo $quantity_carts ?></span>

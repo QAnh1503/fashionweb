@@ -597,10 +597,42 @@ foreach ($list_carts as $cart) {
 
                     <!-- Open Btn -->
                     <button style="position: relative;" id="open_cart_btn">
-                        <img src="../public/img/shop-cart.png" alt="shop-cart"
+                        <img src="http://localhost/fashionweb/public/img/shop-cart.png" alt="shop-cart"
                             style="width:19px; height:19px ;color: #000;">
                         <span style="position: absolute;top: -5px;font-size: 11px;"><?php echo $quantity_carts ?></span>
                     </button>
+                    <script>
+                        // ================================= SHOPPING CART =================================
+                        const openBtn = document.getElementById('open_cart_btn')
+                        const cart = document.getElementById('sidecart')
+                        const closeBtnCart = document.getElementById('close_btn')
+                        const backdrop = document.querySelector('.backdrop')
+                        // const itemEl = document.querySelector('.items')
+
+                        openBtn.addEventListener('click', openCart)
+                        closeBtnCart.addEventListener('click', closeCart)
+                        backdrop.addEventListener('click', closeCart)
+
+                        //Open Cart
+                        function openCart() {
+                            cart.classList.add('open')
+                            backdrop.style.display = 'block'
+
+                            setTimeout(() => {
+                                backdrop.classList.add('show')
+                            }, 0)
+                        }
+
+                        //Close Cart
+                        function closeCart() {
+                            cart.classList.remove('open')
+                            backdrop.classList.remove('show')
+
+                            setTimeout(() => {
+                                backdrop.style.display = 'none'
+                            }, 500);
+                        }
+                    </script>
 
                 </li>
                 <li class="side_menu_user">

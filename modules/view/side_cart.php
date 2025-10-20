@@ -6,52 +6,55 @@
 //     $slug = $_GET['slug'];
 //     $id = $_GET['id'];
 // }
+$slug = $_GET['slug'] ?? 'home';
+$id = $_GET['id'] ?? '';
 
-// if (isset($_POST['removeBtnAll'])) {
-//     // unset($_SESSION['cart']);
-//     db_delete_table('cart_items');
-// }
+
+if (isset($_POST['removeBtnAll'])) {
+    db_delete('cart_items'); // deletes all rows
+}
 
 
 
 // // GET DATA FROM CART ITEMS
 
 
-// // echo "SESSION: " . $_SESSION['email_login'];
-// $user_id_active = 0;
-// $cart_id_active = 0;
-// $status_cart="";
-// $tbl_users = db_fetch_array("SELECT * FROM `tbl_users`");
-// $tbl_carts = db_fetch_array("SELECT * FROM `carts`");
-// foreach ($tbl_users as $item) {
-//     if ($item['email'] == $_SESSION['email_login']) {
-//         $user_id_active = $item['account_id'];
-//     }
-// }
-// // echo "User Id Active: " . $user_id_active;
-// foreach ($tbl_carts as $item) {
-//     if ($item['user_id'] == $user_id_active) {
-//         $cart_id_active = $item['cart_id'];
-//         $status_cart=$item['status'];
-//     }
-// }
-// // echo "Cart Id Active: " . $cart_id_active;
+// echo "SESSION: " . $_SESSION['email_login'];
+// Giả sử user đã login và email lưu trong session
+$user_id_active = 0;
+$quantity_carts = 0;
+$list_carts = array();
 
-// $list_carts= array();
-// $num_row_carts=array();
-// $quantity_carts= 0;
-// if ($status_cart=="Active")
-// {
-//     $list_carts= db_fetch_array("SELECT * FROM `cart_items` where `cart_id`={$cart_id_active}");
-//     $num_row_carts= db_num_rows("SELECT * FROM `cart_items` where `cart_id`={$cart_id_active}");
-    
-//     foreach ($list_carts as $cart)
-//     {
-//         $quantity_carts += $cart['quantity'];
-//     }
-// }
+// Lấy user_id dựa trên email đăng nhập
+$tbl_users = db_fetch_array("SELECT * FROM tbl_users WHERE email = '{$_SESSION['email_login']}'");
+if (!empty($tbl_users)) {
+    $user_id_active = $tbl_users[0]['user_id'];
+}
+
+// Lấy cart_id của user
+$tbl_carts = db_fetch_array("SELECT * FROM carts WHERE user_id = '{$user_id_active}'");
+if (!empty($tbl_carts)) {
+    $cart_id_active = $tbl_carts[0]['cart_id'];
+
+    // Lấy tất cả các sản phẩm trong cart
+    $list_carts = db_fetch_array("
+        SELECT ci.*, p.name, p.price, p.subcategory, p.product_image_1
+        FROM cart_items ci
+        JOIN product p ON ci.product_id = p.product_id
+        WHERE ci.cart_id = {$cart_id_active}
+    ");
+
+    // Tính tổng số lượng
+    foreach ($list_carts as $cart) {
+        $quantity_carts += $cart['quantity'];
+    }
+}
+
+
 
 ?>
+
+
 
 <link rel="stylesheet" href="../../public/css/side_cart.css">
 
@@ -168,7 +171,7 @@
                     <div class='remove_item'>
                         <form action='' method='POST'>
                             <!-- <input type='submit' name=''> -->
-                            <button class='removeBtn' name='removeBtn'><a href='action/remove_cart.php?slug=" . $slug . "&id=" . $id . "&id_product=" . $value['id'] . "'>x</button>
+                            <button class='removeBtn' name='removeBtn'><a href='action/remove_cart.php?slug=" . $slug . "&id=" . $id . "&id_product=" . $value['product_id'] . "'>x</button>
                         </form>
                         </a>
                     </div>
@@ -178,7 +181,7 @@
                     <div class='item_details'>
                         <p style='font-size:12px; line-height:19px; margin-bottom:10px; font-weight:600; text-transform: uppercase;'>" . $value['name'] . "</p>
                         <p style='color:#000; font-size:17px'>$" . number_format($value['price']) . "</p>
-                        <p style='margin-top: 6px;'>Style: " . $value['id'] . "</p>  
+                        <p style='margin-top: 6px;'>Style: " . $value['product_id'] . "</p>  
                         <!-- <div class='qty'>
                             <span>-</span>
                             <strong>1</strong>

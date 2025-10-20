@@ -1,9 +1,9 @@
 <?php
 session_start();
 ob_start();
-require "../db/connect.php";
-require "../db/database.php";
-require "../lib/validation.php";
+require "../../db/connect.php";
+require "../../db/database.php";
+require "../../lib/validation.php";
 // $list_array = db_fetch_array("SELECT * FROM `bags_women`");
 // print_r($list_array);
 
@@ -12,7 +12,7 @@ require "../lib/validation.php";
 
 
 // require 'action/quantity_counter.php';
-require "../inc/header.php";
+require "../../inc/header.php";
 require 'side_cart.php';
 require 'bill.php';
 
@@ -42,7 +42,7 @@ if (isset($_POST['update'])) {
 
 <body>
 
-    <link rel="stylesheet" href="../public/css/cart.css" type="text/css">
+    <link rel="stylesheet" href="../../public/css/cart.css" type="text/css">
     <style>
         #info-cart-wp table tbody tr td .thumb {
             overflow: visible;
@@ -312,27 +312,21 @@ if (isset($_POST['update'])) {
             margin-right: 3px;
             color: aca9a9;
         }
-
         .shipping img {
             width: 20px;
             height: 20px;
         }
-
         .estimated_total {
             font-size: 20px;
             font-family: "Montserrat", sans-serif;
             font-weight: 400;
         }
-
-
-
         /* accordion */
         .accordion-item {
             /* border-bottom: 1px solid #ccc; */
             margin-bottom: 15px;
             margin-top: 15px;
         }
-
         .accordion-header {
             font-family: "Montserrat", sans-serif;
             font-optical-sizing: auto;
@@ -349,13 +343,11 @@ if (isset($_POST['update'])) {
             padding: 10px 0;
             color: #000;
         }
-
         .accordion-icon {
             font-size: 18px;
             color: #000;
             transition: transform 0.5s;
         }
-
         .accordion-item p {
             width: 100%;
             font-family: "Montserrat", sans-serif;
@@ -364,7 +356,6 @@ if (isset($_POST['update'])) {
             text-align: justify;
             color: #000;
         }
-
         .accordion-content {
             display: none;
             font-family: "Montserrat", sans-serif;
@@ -375,16 +366,13 @@ if (isset($_POST['update'])) {
             line-height: 20px;
             transition: all 1s ease;
         }
-
         .stock {
             position: relative;
             display: flex;
         }
-
         .stock p {
             width: auto;
         }
-
         .stock_img {
             width: 20px;
             height: 20px;
@@ -392,7 +380,6 @@ if (isset($_POST['update'])) {
             top: 14px;
             margin-left: 45px;
         }
-
         /* Show content when active */
         .accordion-item.active .accordion-content {
             display: block;
@@ -400,21 +387,15 @@ if (isset($_POST['update'])) {
             transition: all 1s ease;
             /* transition: max-height 0.5s ease; */
         }
-
         @media(prefers-reduced-motion: reduce) {
             .accordion-item.active {
                 transition: none;
             }
         }
-
         /* Rotate the icon when active */
         .accordion-item.active .accordion-icon {
             transform: rotate(45deg);
         }
-
-
-
-
         .checkout {
             display: flex;
             flex-direction: column;
@@ -480,13 +461,9 @@ if (isset($_POST['update'])) {
             transform: scale(0.93);
         }
     </style>
-
-
-
-    <!-- ============================================ MAIN ============================================-->
     <div id="main_body">
         <div id="upper_part">
-            <img src="../public/img/models-bags.webp" alt="high-fashion-black-model.jpg">
+            <img src="../../public/img/models-bags.webp" alt="high-fashion-black-model.jpg">
             <div id="content_upper_part">
                 <h2>SHOPPING BAG</h2>
                 <p>Crafted for everyday luxury, STYLESEEKER designer handbags blend sophistication and flair, with
@@ -511,108 +488,14 @@ if (isset($_POST['update'])) {
             </div>
             <div id="wrapper" class="wp-inner clearfix">
                 <div class="section" id="info-cart-wp">
-                    <!-- <div class="section-detail table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <td>ID</td>
-                                        <td>Image</td>
-                                        <td>Name</td>
-                                        <td>Price</td>
-                                        <td>Quantity</td>
-                                        <td colspan="2">Total Cost</td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>HCA00031</td>
-                                        <td>
-                                            <a href="" title="" class="thumb">
-                                                <img src="public/images/img-product.png" alt="">
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a href="" title="" class="name-product">Đồ chơi trẻ em dưới 1 tuổi</a>
-                                        </td>
-                                        <td>5.000.000đ</td>
-                                        <td>
-                                            <input type="text" name="num-order" value="1" class="num-order">
-                                        </td>
-                                        <td>5.000.000đ</td>
-                                        <td>
-                                            <a href="" title="" class="del-product"><i class="fa fa-trash-o"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>HCA00032</td>
-                                        <td>
-                                            <a href="" title="" class="thumb">
-                                                <img src="public/images/img-product.png" alt="">
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a href="" title="" class="name-product">Đồ chơi trẻ em dưới 1 tuổi</a>
-                                        </td>
-                                        <td>7.000.000đ</td>
-                                        <td>
-                                            <input type="text" name="num-order" value="1" class="num-order">
-                                        </td>
-                                        <td>7.000.000đ</td>
-                                        <td>
-                                            <a href="" title="" class="del-product"><i class="fa fa-trash-o"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>HCA00032</td>
-                                        <td>
-                                            <a href="" title="" class="thumb">
-                                                <img src="public/images/img-product.png" alt="">
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a href="" title="" class="name-product">Đồ chơi trẻ em dưới 1 tuổi</a>
-                                        </td>
-                                        <td>7.000.000đ</td>
-                                        <td>
-                                            <input type="text" name="num-order" value="1" class="num-order">
-                                        </td>
-                                        <td>7.000.000đ</td>
-                                        <td>
-                                            <a href="" title="" class="del-product"><i class="fa fa-trash-o"></i></a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <td colspan="7">
-                                            <div class="clearfix">
-                                                <p id="total-price" class="fl-right">Tổng giá: <span>12.000.000đ</span>
-                                                </p>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="7">
-                                            <div class="clearfix">
-                                                <div class="fl-right">
-                                                    <a href="" title="" id="update-cart">Cập nhật giỏ hàng</a>
-                                                    <a href="?page=checkout" title="" id="checkout-cart">Thanh toán</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tfoot>
-                            </table>
-                        </div> -->
                     <div class="selections">
                         <?php
-
                         foreach ($list_carts as $value) {
                             ?>
                             <div class="selection">
                                 <div class="selection_img">
                                     <?php
-                                    $img_pathItem = "../public/img/";
+                                    $img_pathItem = "../../public/img/";
                                     if ($value['subcategory'] == "Bag") {
                                         $img_pathItem .= "bags/";
                                     } else if ($value['subcategory'] == "Shoes") {
@@ -633,7 +516,7 @@ if (isset($_POST['update'])) {
                                         style="display:flex; flex-direction:row; justify-content:space-between">
                                         <div>
                                             <a
-                                                href="detailed_product.php?slug=<?php echo str_replace(' ', '-', $value['name']) ?>&id=<?php echo $value['id'] ?>">
+                                                href="detailed_product.php?slug=<?php echo str_replace(' ', '-', $value['name']) ?>&id=<?php echo $value['product_id'] ?>">
                                                 <?php echo $value['name']; ?>
                                             </a>
                                             <p style="margin-top:10px">Style:
@@ -641,15 +524,6 @@ if (isset($_POST['update'])) {
                                             </p>
                                             <p>Variation: <?php echo htmlspecialchars($value['color']); ?></p>
                                         </div>
-                                        <!-- <div class="counter_status_comment"
-                                                style="display:flex; flex-direction:column; justify-content:space-between;height: 81px;">
-                                               
-
-                                                <div class="status_comment">
-                                                    <h4>AVAILABLE</h4>
-                                                    <p>Enjoy complimentary delivery or Collect In Store.</p>
-                                                </div>
-                                            </div> -->
                                         <div>
                                             <p style="font-size: 18px;text-align: right; width: 100%;"><?php
                                             $priceItem = $value['price'] * $value['quantity'];
@@ -657,21 +531,6 @@ if (isset($_POST['update'])) {
                                         </div>
                                     </div>
                                     <div class="selection_detail_2">
-                                        <!-- <p>$<?php
-                                        //$priceItem = $value['price'] * $value['quantity'];
-                                        //echo number_format($priceItem, 0, '.', ',') ?></p> -->
-
-
-
-                                        <!-- <span class="under_span-update"><a
-                                                        href="action/update_cart.php?slug=cart&id_product=<?php //echo $value['id'] ?>&quantity=<?php
-                                                         // if (isset($_POST['quantityNum'])) echo $_POST['quantityNum'] ;
-                                                         // else echo $quantityNum ?>">SAVED
-                                                        ITEM</a></span> -->
-
-
-                                        <!-- <button class="under_span-update" name="update">SAVED ITEM</button> -->
-
                                         <form action="" method="POST" style="width:100%;">
 
                                             <div>
@@ -696,7 +555,7 @@ if (isset($_POST['update'])) {
                                             <div class="modify">
 
                                                 <span class="under_span-remove"><a
-                                                        href="action/remove_cart.php?slug=cart&id_product=<?php echo $value['id'] ?>">REMOVE</a></span>
+                                                        href="action/remove_cart.php?slug=cart&id_product=<?php echo $value['cart_id'] ?>">REMOVE</a></span>
                                                 <button class="under_span-update" name="update">UPDATE</button>
                                             </div>
 
@@ -766,7 +625,7 @@ if (isset($_POST['update'])) {
                                                 <td class="col_1">
                                                     <div class="stock">
                                                         <p>In Stock:</p>
-                                                        <img class="stock_img" src="../public/img/help.png"
+                                                        <img class="stock_img" src="../../public/img/help.png"
                                                             alt="help.png">
 
 
@@ -812,22 +671,11 @@ if (isset($_POST['update'])) {
 
                             <div class="checkout">
                                 <button><a style="" href="checkout.php">Checkout</a></button>
-                                <!-- <span>OR</span>
-                                <button>PAY WITH MB</button> -->
                             </div>
 
                         </div>
                     </div>
                 </div>
-                <!-- <div class="section" id="action-cart-wp">
-                        <div class="section-detail">
-                            <p class="title">Click vào <span>“Cập nhật giỏ hàng”</span> để cập nhật số lượng. Nhập vào
-                                số lượng <span>0</span> để xóa sản phẩm khỏi giỏ hàng. Nhấn vào thanh toán để hoàn tất
-                                mua hàng.</p>
-                            <a href="?page=home" title="" id="buy-more">Mua tiếp</a><br />
-                            <a href="" title="" id="delete-cart">Xóa giỏ hàng</a>
-                        </div>
-                    </div> -->
             </div>
         </div>
 
@@ -900,7 +748,7 @@ if (isset($_POST['update'])) {
 
 <div id="footer">
     <div id="content_footer">
-        <p style="font-size: 15px; font-weight bold;">SIGN UP FOR STYLESEEKER UPDATES</p>
+        <p style="font-size: 15px; font-weight: bold;">SIGN UP FOR STYLESEEKER UPDATES</p>
         <p style="font-size: 28px; line-height: 45px;">Embrace the holiday spirit by exploring unique gifts and
             uncovering the latest news from the House.</p>
         <p class="plus" style="font-size: 12px;">Subscribe</p>
@@ -1096,26 +944,7 @@ if (isset($_POST['update'])) {
     </div>
     <p>© 2022 - 2024 Style Seeker S.p.A. - All rights reserved. SIAE LICENCE # 2294/I/1936 and 5647/I/1936</p>
 </div>
-<script src="../public/js/cart.js"></script>
-<!-- <script>
-            //Modal
-            const modal = document.querySelector('.modal_footer');
-            const btn = document.querySelector('.locator');
-            const closeBtn = document.querySelector('.close');
-
-            btn.onclick = function (event) {
-                event.preventDefault();
-                modal.style.display = 'flex';
-            }
-            closeBtn.onclick = function (event) {
-                modal.style.display = 'none';
-            }
-            window.onclick = function (event) {
-                if (event.target == 'modal')
-                    modal.style.display = 'none';
-            }
-        </script> -->
-
+<script src="../../public/js/cart.js"></script>
 </div>
 <script>
     const openBtn = document.getElementById('open_cart_btn')

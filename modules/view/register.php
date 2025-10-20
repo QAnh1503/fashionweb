@@ -5,10 +5,12 @@ require "../../db/connect.php";
 require "../../db/database.php";
 require "../../lib/validation.php";
 
-$OTP = $_SESSION['OTP'];
+$OTP = $_SESSION['OTP'] ?? null;
 $email = $_SESSION['email'] ?? '';
 
-
+if (!$OTP) {
+    echo "<p style='color:red;'>⚠️ OTP chưa được tạo. Vui lòng quay lại bước trước để nhận mã xác thực.</p>";
+}
 // echo $OTP;
 // if (isset($_POST['btn_reg'])) {
 //     $error = array();
@@ -268,7 +270,7 @@ $email = $_SESSION['email'] ?? '';
 
                     <div id="sent_vertification_code">
                         <img id="img_mail" style="width: 20px; height: 20px; margin-bottom: 10px"
-                            src="../public/img/Mail.png" alt="Mail">
+                            src="http://localhost/fashionweb/public/img/Mail.png" alt="Mail">
                         <p><strong>We've sent a verification code to: </strong></p>
                         <p><?php echo htmlspecialchars($email); ?></p>
 

@@ -1,10 +1,10 @@
 <?php
 session_start();
 ob_start();
-require "../db/connect.php";
-require "../db/database.php";
+require "../../db/connect.php";
+require "../../db/database.php";
 
-require "../inc/header.php";
+require "../../inc/header.php";
 require 'side_cart.php';
 
 require "../lib/pagging.php";
@@ -621,7 +621,7 @@ if ($subcategory == "Shoes")
         font-size: 12px;
     }
     .sign_up_for_ss {
-        font-size: 15px; font-weight bold;
+        font-size: 15px; font-weight: bold;
     }
     .embrace {
         font-size: 28px; 

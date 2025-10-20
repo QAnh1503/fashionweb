@@ -1724,7 +1724,7 @@ if (isset($_POST['payment'])) {
 
 <div id="footer">
     <div id="content_footer">
-        <p style="font-size: 15px; font-weight bold;">SIGN UP FOR STYLESEEKER UPDATES</p>
+        <p style="font-size: 15px; font-weight: bold;">SIGN UP FOR STYLESEEKER UPDATES</p>
         <p style="font-size: 28px; line-height: 45px;">Embrace the holiday spirit by exploring unique gifts and
             uncovering the latest news from the House.</p>
         <p class="plus" style="font-size: 12px;">Subscribe</p>

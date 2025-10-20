@@ -153,7 +153,7 @@
                 <div class="selection" style="width: 100%;">
                     <div class="selection_img">
                         <?php
-                        $img_pathItem = "../public/img/";
+                        $img_pathItem = "../../public/img/";
                         if ($value['subcategory'] == "Bag") {
                             $img_pathItem .= "bags/";
                         } else if ($value['subcategory'] == "Shoes") {

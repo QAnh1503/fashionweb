@@ -24,16 +24,16 @@ $list_subcategory_items = array();
 $num_rows_subcategory_items = 0;
 
 if (!empty($category) && !empty($subcategory)) {
-    $list_subcategory_items = db_fetch_array("SELECT * FROM `product` WHERE `category`='{$category}' AND `subcategory`='{$subcategory}'");
-    $num_rows_subcategory_items = db_num_rows("SELECT * FROM `product` WHERE `category`='{$category}' AND `subcategory`='{$subcategory}'");
+    $list_subcategory_items = db_fetch_array("SELECT * FROM product WHERE category='{$category}' AND subcategory='{$subcategory}'");
+    $num_rows_subcategory_items = db_num_rows("SELECT * FROM product WHERE category='{$category}' AND subcategory='{$subcategory}'");
 }
 if ($category == "GIFT") {
-    $list_subcategory_items = db_fetch_array("SELECT * FROM `product` WHERE `subcategory`='{$subcategory}'");
-    $num_rows_subcategory_items = db_num_rows("SELECT * FROM `product` WHERE `subcategory`='{$subcategory}'");
+    $list_subcategory_items = db_fetch_array("SELECT * FROM product WHERE subcategory='{$subcategory}'");
+    $num_rows_subcategory_items = db_num_rows("SELECT * FROM product WHERE subcategory='{$subcategory}'");
 }
 if (!empty($category) && empty($subcategory)) {
-    $list_subcategory_items = db_fetch_array("SELECT * FROM `product` WHERE `category`='{$category}'");
-    $num_rows_subcategory_items = db_num_rows("SELECT * FROM `product` WHERE `category`='{$category}'");
+    $list_subcategory_items = db_fetch_array("SELECT * FROM product WHERE category='{$category}'");
+    $num_rows_subcategory_items = db_num_rows("SELECT * FROM product WHERE category='{$category}'");
 }
 
 $variant = "";
@@ -41,11 +41,11 @@ $list_variants = array();
 if (isset($_GET['variant'])) {
     $variant = $_GET['variant'];
     if ($category == "GIFT") {
-        $list_subcategory_items = db_fetch_array("SELECT * FROM `product` WHERE `variant`='{$variant}'");
-        $num_rows_subcategory_items = db_num_rows("SELECT * FROM `product` WHERE `variant`='{$variant}'");
+        $list_subcategory_items = db_fetch_array("SELECT * FROM product WHERE variant='{$variant}'");
+        $num_rows_subcategory_items = db_num_rows("SELECT * FROM product WHERE variant='{$variant}'");
     } else {
-        $list_subcategory_items = db_fetch_array("SELECT * FROM `product` WHERE `category`='{$category}' AND `variant`='{$variant}'");
-        $num_rows_subcategory_items = db_num_rows("SELECT * FROM `product` WHERE `category`='{$category}' AND `variant`='{$variant}'");
+        $list_subcategory_items = db_fetch_array("SELECT * FROM product WHERE category='{$category}' AND variant='{$variant}'");
+        $num_rows_subcategory_items = db_num_rows("SELECT * FROM product WHERE category='{$category}' AND variant='{$variant}'");
     }
 }
 

@@ -10,8 +10,8 @@ $email_login=$_SESSION['email_login'];
 
 $user_id_active = 0;
 $cart_id_active = 0;
-$tbl_users = db_fetch_array("SELECT * FROM `tbl_users`");
-$tbl_carts = db_fetch_array("SELECT * FROM `carts`");
+$tbl_users = db_fetch_array("SELECT * FROM tbl_users");
+$tbl_carts = db_fetch_array("SELECT * FROM carts");
 foreach ($tbl_users as $item) {
     if ($item['email'] == $_SESSION['email_login']) {
         $user_id_active = $item['account_id'];
@@ -25,8 +25,8 @@ foreach ($tbl_carts as $item) {
 }
 // echo "Cart Id Active: " . $cart_id_active;
 
-$list_carts = db_fetch_array("SELECT * FROM `cart_items` WHERE `cart_id`={$cart_id_active}");
-$num_rows = db_num_rows("SELECT * FROM `cart_items` where `cart_id`={$cart_id_active}");
+$list_carts = db_fetch_array("SELECT * FROM cart_items WHERE cart_id={$cart_id_active}");
+$num_rows = db_num_rows("SELECT * FROM cart_items where cart_id={$cart_id_active}");
 
 // print_r($_SESSION); 
 
@@ -34,7 +34,7 @@ $num_rows = db_num_rows("SELECT * FROM `cart_items` where `cart_id`={$cart_id_ac
     // {
     //     echo "Cookie: ".$_COOKIE['email_login'];
     // }
-$listUsers= db_fetch_array("SELECT * FROM `tbl_users`");
+$listUsers= db_fetch_array("SELECT * FROM tbl_users");
 $id_user_account=0;
 foreach ($listUsers as $user){
     if ($user['email'] == $_SESSION['email_login'])

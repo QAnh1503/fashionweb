@@ -7,7 +7,7 @@ require "../../db/database.php";
 require "../../inc/header.php";
 require 'side_cart.php';
 
-require "../lib/pagging.php";
+require "../../lib/pagging.php";
 
 $num_per_page = 10;
 $num_page = ceil($num_rows_subcategory_items / $num_per_page);
@@ -30,7 +30,7 @@ if (!empty($category) && !empty($subcategory)) {
     if ($subcategory == "shoes")
         $subcategory = "Shoes";
 
-    $where = "`category`='{$category}' AND `subcategory`='{$subcategory}'";
+    $where = "category='{$category}' AND subcategory='{$subcategory}'";
 }
 if ($category == "GIFT") {
     if ($subcategory == "shirt")
@@ -45,17 +45,17 @@ if ($category == "GIFT") {
     $where = "`subcategory`='{$subcategory}'";
 }
 if (!empty($category) && empty($subcategory)) {
-    $where = "`category`='{$category}'";
+    $where = "category='{$category}'";
 }
 if (!empty($variant)) {
     if ($category == "GIFT") {
         $where = "`variant`='{$variant}'";
     } else {
-        $where = "`category`='{$category}' AND `variant`='{$variant}'";
+        $where = "category='{$category}' AND `variant`='{$variant}'";
     }
 }
 // echo "Where: ".$where;
-require "../lib/getProducts.php";
+require "../../lib/getProducts.php";
 $list_subcategory_items = get_products($start, $num_per_page, $where);
 
 if ($subcategory == "Shirt")
@@ -67,7 +67,7 @@ if ($subcategory == "Hat")
 if ($subcategory == "Shoes")
     $subcategory = "shoes";
 ?>
-<link rel="stylesheet" href="../public/css/product.css" type="text/css">
+<link rel="stylesheet" href="../../public/css/product.css" type="text/css">
 <style>
     #list_product {
         position: relative;
@@ -291,7 +291,7 @@ if ($subcategory == "Shoes")
 <div id="main_body">
     <div id="upper_part">
         <?php ?>
-        <img src="../public/img/<?php
+        <img src="../../public/img/<?php
         if ($category == "WOMEN")
             echo "WOMEN.webp";
         if ($category == "MEN")
@@ -430,7 +430,7 @@ if ($subcategory == "Shoes")
             <div class="product">
 
                 <?php
-                $img_pathItem = "../public/img/";
+                $img_pathItem = "../../public/img/";
                 if ($item['subcategory'] == "Bag") {
                     $img_pathItem .= "bags/";
                 } else if ($item['subcategory'] == "Shoes") {
@@ -443,10 +443,10 @@ if ($subcategory == "Shoes")
                     $img_pathItem .= "shirt/";
                 }
                 $img_pathItemAdd = $img_pathItem;
-                $img_pathItem .= $item['product-image-1'];
-                $img_pathItemAdd .= $item['product-image-2'];
+                $img_pathItem .= $item["product_image_1"];
+                $img_pathItemAdd .= $item["product_image_2"];
                 ?>
-                <img src="<?php echo $img_pathItem ?>" alt="<?php echo $item['product-image-1'] ?>"
+                <img src="<?php echo $img_pathItem ?>" alt="<?php echo $item["product_image_1"] ?>"
                     onmouseover="changeImage(this, '<?php echo $img_pathItemAdd ?>')"
                     onmouseout="resetImage(this, '<?php echo $img_pathItem ?>')">
 
@@ -456,7 +456,7 @@ if ($subcategory == "Shoes")
                     <span style="display:block; margin-bottom: 12px; color: #000; font-size:18px">
                         <?php echo number_format($item['price'], 0, '.', ',') . " VND"; ?></span>
                     <!-- <span class="shop_this">SHOP THIS</span> -->
-                    <a href="detailed_product.php?slug=<?php echo str_replace(' ', '-', $item['name']) ?>&id=<?php echo $item['id'] ?>"
+                    <a href="detailed_product.php?slug=<?php echo str_replace(' ', '-', $item['name']) ?>&id=<?php echo $item['product_id'] ?>"
                         class="shop_this">SHOP THIS</a>
                 </div>
 

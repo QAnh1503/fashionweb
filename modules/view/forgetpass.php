@@ -59,7 +59,7 @@ if (isset($_POST['btn_login'])) {
     // print_r($error);
     // check again
 
-    $list_users = db_fetch_array("SELECT * FROM `tbl_users`");
+    $list_users = db_fetch_array("SELECT * FROM tbl_users");
     if (empty($error)) {
         // if (check_login ($email, md5($pass)))
         // {

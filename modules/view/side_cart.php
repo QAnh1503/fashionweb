@@ -64,7 +64,7 @@
     <div class="cart_content">
         <!-- Cart Header-->
         <div class="cart_header">
-            <img src="../public/img/shop-cart.png" alt="">
+            <img src="../../public/img/shop-cart.png" alt="">
             <div class="header_title">
                 <h2>YOUR SHOPPING BAG</h2>
                 <?php
@@ -161,7 +161,7 @@
                 } else if ($value['subcategory'] == "Shirt") {
                     $img_pathItem .= "shirt/";
                 }
-                $img_pathItem .= $value['product-image-1'];
+                $img_pathItem .= $value['product_image_1'];
 
                 $output .= "
                 <div class='cart_item'>

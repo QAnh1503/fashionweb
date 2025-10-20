@@ -2,8 +2,8 @@
 // require "../inc/header.php";
 session_start();
 ob_start();
-require "../db/connect.php";
-require "../db/database.php";
+require "../../db/connect.php";
+require "../../db/database.php";
 ?>
 <?php
 $act = $_GET['slug'];
@@ -11,12 +11,12 @@ $list_product_details = array();
 
 
 $id = $_GET['id'];
-$list_product_details = db_fetch_array("SELECT * FROM `product`");
+$list_product_details = db_fetch_array("SELECT * FROM product");
 
 
 $product_details = array();
 foreach ($list_product_details as $product) {
-    if ($product['id'] == $id) {
+    if ($product['product_id'] == $id) {
         $product_details = $product;
         break;
     }
@@ -34,25 +34,25 @@ if ($product_details['subcategory'] == "Bag") {
 } else if ($product_details['subcategory'] == "Shirt") {
     $img_path .= "shirt/";
 }
-$img_path .= $product_details['product-image-1'];
+$img_path .= $product_details['product_image_1'];
 
 
 
 
 
-$list_array = db_fetch_array("SELECT *FROM `product`");
-$num_rows = db_num_rows("SELECT * FROM `product`");
+$list_array = db_fetch_array("SELECT *FROM product");
+$num_rows = db_num_rows("SELECT * FROM product");
 
 $ids = array();
 // $list_items_cart = db_fetch_array("SELECT * FROM `cart_items`");
 $user_id_active = 0;
 $cart_id_active = 0;
 $status_cart="";
-$tbl_users = db_fetch_array("SELECT * FROM `tbl_users`");
-$tbl_carts = db_fetch_array("SELECT * FROM `carts`");
+$tbl_users = db_fetch_array("SELECT * FROM tbl_users");
+$tbl_carts = db_fetch_array("SELECT * FROM carts");
 foreach ($tbl_users as $item) {
     if ($item['email'] == $_SESSION['email_login']) {
-        $user_id_active = $item['account_id'];
+        $user_id_active = $item['user_id'];
     }
 }
 // echo "User Id Active: " . $user_id_active;
@@ -64,7 +64,7 @@ foreach ($tbl_carts as $item) {
 }
 // echo "Cart Id Active: " . $cart_id_active;
 
-$list_items_cart = db_fetch_array("SELECT * FROM `cart_items` where `cart_id`={$cart_id_active}");
+$list_items_cart = db_fetch_array("SELECT * FROM cart_items where cart_id={$cart_id_active}");
 if (empty($list_items_cart))
 {
     echo "List_items_cart is Empty !!!";
@@ -92,8 +92,8 @@ if (isset($_POST['add_to'])) {
                 'price' => $product_details['price'],
                 'color' => $product_details['color'],
                 'description' => $product_details['description'],
-                '`product-image-1`' => $product_details['product-image-1'],
-                '`product-image-2`' => $product_details['product-image-2'],
+                '`product_image_1`' => $product_details['product_image_1'],
+                '`product_image_2`' => $product_details['product_image_2'],
                 'quantity' => 1
             );
             $id_insert = db_insert("cart_items", $data);
@@ -150,8 +150,8 @@ if (isset($_POST['add_to'])) {
             'price' => $product_details['price'],
             'color' => $product_details['color'],
             'description' => $product_details['description'],
-            '`product-image-1`' => $product_details['product-image-1'],
-            '`product-image-2`' => $product_details['product-image-2'],
+            '`product_image_1`' => $product_details['product_image_1'],
+            '`product_image_2`' => $product_details['product_image_2'],
             'quantity' => 1
         );
         $id_insert = db_insert("cart_items", $data);        
@@ -168,7 +168,7 @@ if (isset($_POST['add_to'])) {
     //             'color' => $product_details['color'],
     //             'status' => "AVAILABLE",
     //             'description' => $product_details['description'],
-    //             '`product-image-1`' => $product_details['product-image-1'],
+    //             '`product_image_1`' => $product_details['product_image_1'],
     //             'quantity' => 1
     //         );
     //         $_SESSION['cart'][] = $session_cart;
@@ -192,7 +192,7 @@ if (isset($_POST['add_to'])) {
     //         'color' => $product_details['color'],
     //         'status' => "AVAILABLE",
     //         'description' => $product_details['description'],
-    //         '`product-image-1`' => $product_details['product-image-1'],
+    //         '`product_image_1`' => $product_details['product_image_1'],
     //         'quantity' => 1
     //     );
     //     $_SESSION['cart'][] = $session_cart;
@@ -200,11 +200,17 @@ if (isset($_POST['add_to'])) {
 }
 // require 'header.php';
 require 'side_cart.php';
-foreach ($list_carts as $cart)
-{
-    $quantity_carts += $cart['quantity'];
+// foreach ($list_carts as $cart)
+// {
+//     $quantity_carts += $cart['quantity'];
+// }
+$quantity_carts = 0;
+if (!empty($list_carts) && is_array($list_carts)) {
+    foreach ($list_carts as $cart) {
+        $quantity_carts += $cart['quantity'];
+    }
 }
-require "../inc/header.php";
+require "../../inc/header.php";
 ?>
 
 
@@ -218,7 +224,7 @@ require "../inc/header.php";
 <!-- Linking SwiperJS CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
-<link rel="stylesheet" href="../public/css/detailed_product.css" type="text/css">
+<link rel="stylesheet" href="../../public/css/detailed_product.css" type="text/css">
 
 <!-- ============================================ MAIN ============================================-->
 <div class="product_infor">
@@ -239,8 +245,8 @@ require "../inc/header.php";
             } else if ($product_details['subcategory'] == "Shirt") {
                 echo "shirt/";
             }
-            echo $product_details['product-image-1'];
-            ?>" alt="<?php echo $product_details['product-image-1'] ?>">
+            echo $product_details['product_image_1'];
+            ?>" alt="<?php echo $product_details['product_image_1'] ?>">
 
             <img src="../public/img/<?php
             if ($product_details['subcategory'] == "Bag") {
@@ -254,8 +260,8 @@ require "../inc/header.php";
             } else if ($product_details['subcategory'] == "Shirt") {
                 echo "shirt/";
             }
-            echo $product_details['product-image-2'];
-            ?>" alt="<?php echo $product_details['product-image-2'] ?>">
+            echo $product_details['product_image_2'];
+            ?>" alt="<?php echo $product_details['product_image_2'] ?>">
         </div>
     </div>
     <!-- ================ img_content of above_part ================ -->
@@ -391,7 +397,7 @@ require "../inc/header.php";
         <h2>PRODUCT DETAILS</h2>
         <div id="detailed_more">
             <div>
-                <h3>ID: <?php echo $product_details['id'] ?></h3>
+                <h3>ID: <?php echo $product_details['product_id'] ?></h3>
                 <div class="detailed_content">
                     <p style="color:#000"><?php echo $product_details['description'] ?></p>
                     <div class="accordion">
@@ -529,8 +535,8 @@ require "../inc/header.php";
                 } else if ($product_details['subcategory'] == "Shirt") {
                     echo "shirt/";
                 }
-                echo $product_details['product-image-1'];
-                ?>" alt="<?php echo $product_details['product-image-1'] ?>">
+                echo $product_details['product_image_1'];
+                ?>" alt="<?php echo $product_details['product_image_1'] ?>">
 
                 <div class="commitment">
                     <img src="../public/img/worldwide.png" alt="worldwide.png">
@@ -599,17 +605,17 @@ require "../inc/header.php";
                                 $img_pathItem .= "shirt/";
                             }
                             $img_pathItemAdd = $img_pathItem;
-                            $img_pathItem .= $item['product-image-1'];
-                            $img_pathItemAdd .= $item['product-image-2'];
+                            $img_pathItem .= $item['product_image_1'];
+                            $img_pathItemAdd .= $item['product_image_2'];
                             ?>
-                            <img src="<?php echo $img_pathItem ?>" alt="<?php echo $item['product-image-1'] ?>"
+                            <img src="<?php echo $img_pathItem ?>" alt="<?php echo $item['product_image_1'] ?>"
                                 onmouseover="changeImage(this, '<?php echo $img_pathItemAdd ?>')"
                                 onmouseout="resetImage(this, '<?php echo $img_pathItem ?>')">
                             <div class="img_contents">
                                 <h3><?php echo $item['name'] ?></h3>
                                 <span style="display:block; margin-bottom: 12px; color: #000; font-size:18px">
                                     <?php echo number_format($item['price'], 0, '.', ',')." VND" ?></span>
-                                <a href="detailed_product.php?slug=<?php echo str_replace(' ', '-', $item['name']) ?>&id=<?php echo $item['id'] ?>"
+                                <a href="detailed_product.php?slug=<?php echo str_replace(' ', '-', $item['name']) ?>&id=<?php echo $item['product_id'] ?>"
                                     class="shop_this">SHOP THIS</a>
                             </div>
 
